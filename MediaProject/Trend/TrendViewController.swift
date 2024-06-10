@@ -32,6 +32,8 @@ final class TrendViewController: UIViewController {
     }
     
     private func setupNavi() {
+        navigationItem.title = ""
+        
         let list = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(listBarButtonTapped))
         navigationItem.leftBarButtonItem = list
         
@@ -71,7 +73,7 @@ final class TrendViewController: UIViewController {
             "Authorization": APIKey.apiKey
         ]
         
-        AF.request(APIURL.apiURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: TrendData.self) { response in
+        AF.request(APIURL.trendAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: TrendData.self) { response in
             switch response.result {
             case .success(let data):
                 self.trends = data.results
@@ -110,7 +112,21 @@ extension TrendViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
+        let vc = TrendDetailViewController()
+        
+        if self.trends[indexPath.row].mediaType == .movie {
+            vc.mediaType = .movie
+        } else if self.trends[indexPath.row].mediaType == .tv {
+            vc.mediaType = .tv
+        }
+        
+        vc.id = trends[indexPath.row].id ?? 0
+        vc.titleText = trends[indexPath.row].title ?? trends[indexPath.row].name
+        vc.posterImagePath = trends[indexPath.row].posterPath
+        vc.backPosterImagePath = trends[indexPath.row].backdropPath
+        vc.overView = trends[indexPath.row].overview
+        
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 

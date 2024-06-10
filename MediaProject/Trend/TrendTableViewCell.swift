@@ -19,7 +19,7 @@ final class TrendTableViewCell: UITableViewCell {
             
             releaseDateLabel.text = trend.releaseDate ?? trend.firstAirDate
             typeLabel.text = "#" + (trend.type ?? "")
-            let url = APIURL.makePosterImageURL(path: trend.posterPath ?? "")
+            let url = APIURL.makeImageURL(path: trend.posterPath ?? "")
             posterImageView.kf.setImage(with: url)
             averageValueLabel.text = trend.voteAverageString
             mediaTitleLabel.text = trend.title ?? trend.name

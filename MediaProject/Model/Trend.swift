@@ -7,6 +7,11 @@
 
 import Foundation
 
+enum MediaType {
+    case movie
+    case tv
+}
+
 struct TrendData: Codable {
     let results: [Trend]
 }
@@ -21,6 +26,18 @@ struct Trend: Codable {
     let overview: String?
     let type: String?
     let voteAverage: Float?
+    let backdropPath: String?
+    
+    var mediaType: MediaType {
+        switch type {
+        case "tv":
+            return .tv
+        case "movie":
+            return .movie
+        default:
+            return .movie
+        }
+    }
     
     var voteAverageString: String? {
         let formatter = NumberFormatter()
@@ -39,5 +56,6 @@ struct Trend: Codable {
         case overview
         case type = "media_type"
         case voteAverage = "vote_average"
+        case backdropPath = "backdrop_path"
     }
 }
