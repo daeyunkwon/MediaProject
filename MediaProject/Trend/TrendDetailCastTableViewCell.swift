@@ -39,7 +39,7 @@ final class TrendDetailCastTableViewCell: UITableViewCell {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-        label.font = .boldSystemFont(ofSize: 18)
+        label.font = .boldSystemFont(ofSize: 17)
         label.textColor = .label
         return label
     }()
@@ -84,13 +84,13 @@ final class TrendDetailCastTableViewCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(15)
-            make.centerY.equalTo(profileImageView.snp.centerY).offset(-10)
+            make.centerY.equalTo(profileImageView.snp.centerY).offset(-13)
         }
         
         contentView.addSubview(characterNameLabel)
         characterNameLabel.snp.makeConstraints { make in
             make.leading.equalTo(profileImageView.snp.trailing).offset(15)
-            make.centerY.equalTo(profileImageView.snp.centerY).offset(10)
+            make.centerY.equalTo(profileImageView.snp.centerY).offset(13)
         }
     }
 }
