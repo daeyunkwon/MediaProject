@@ -30,6 +30,7 @@ final class TrendDetailOverViewTableViewCell: UITableViewCell {
         tv.isScrollEnabled = false
         tv.isEditable = false
         tv.textAlignment = .center
+        tv.font = .systemFont(ofSize: 14)
         return tv
     }()
     
@@ -75,7 +76,7 @@ final class TrendDetailOverViewTableViewCell: UITableViewCell {
             make.top.equalTo(overViewTextView.snp.bottom).offset(10)
             make.centerX.equalTo(contentView.snp.centerX)
             make.height.lessThanOrEqualTo(1000)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.bottom.equalTo(contentView.snp.bottom).offset(-10)
         }
     }
     
