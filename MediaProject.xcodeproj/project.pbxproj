@@ -9,21 +9,32 @@
 /* Begin PBXBuildFile section */
 		4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F0FD2C16D02C00878AFE /* AppDelegate.swift */; };
 		4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F0FF2C16D02C00878AFE /* SceneDelegate.swift */; };
-		4411F1022C16D02C00878AFE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1012C16D02C00878AFE /* ViewController.swift */; };
+		4411F1022C16D02C00878AFE /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1012C16D02C00878AFE /* TrendViewController.swift */; };
 		4411F1072C16D02D00878AFE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4411F1062C16D02D00878AFE /* Assets.xcassets */; };
 		4411F10A2C16D02D00878AFE /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 4411F1092C16D02D00878AFE /* Base */; };
 		4411F1122C16D0BB00878AFE /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 4411F1112C16D0BB00878AFE /* .gitignore */; };
+		4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1132C16D8FD00878AFE /* APIKey.swift */; };
+		4411F1162C16D96800878AFE /* Trend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1152C16D96800878AFE /* Trend.swift */; };
+		4411F11E2C16DB3200878AFE /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4411F11D2C16DB3200878AFE /* SnapKit */; };
+		4411F1212C16DB5400878AFE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4411F1202C16DB5400878AFE /* Alamofire */; };
+		4411F1242C16DB6300878AFE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 4411F1232C16DB6300878AFE /* Kingfisher */; };
+		4411F1262C16EC8F00878AFE /* TrendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1252C16EC8F00878AFE /* TrendTableViewCell.swift */; };
+		4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1272C16ECF800878AFE /* Reuseable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4411F0FA2C16D02C00878AFE /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4411F0FD2C16D02C00878AFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4411F0FF2C16D02C00878AFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		4411F1012C16D02C00878AFE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4411F1012C16D02C00878AFE /* TrendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendViewController.swift; sourceTree = "<group>"; };
 		4411F1062C16D02D00878AFE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4411F1092C16D02D00878AFE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4411F10B2C16D02D00878AFE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4411F1112C16D0BB00878AFE /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		4411F1132C16D8FD00878AFE /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		4411F1152C16D96800878AFE /* Trend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trend.swift; sourceTree = "<group>"; };
+		4411F1252C16EC8F00878AFE /* TrendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCell.swift; sourceTree = "<group>"; };
+		4411F1272C16ECF800878AFE /* Reuseable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reuseable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +42,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4411F1242C16DB6300878AFE /* Kingfisher in Frameworks */,
+				4411F11E2C16DB3200878AFE /* SnapKit in Frameworks */,
+				4411F1212C16DB5400878AFE /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,14 +71,58 @@
 		4411F0FC2C16D02C00878AFE /* MediaProject */ = {
 			isa = PBXGroup;
 			children = (
+				4411F1192C16DAC700878AFE /* Application */,
+				4411F11B2C16DAF500878AFE /* Utils */,
+				4411F1172C16DAB300878AFE /* Model */,
+				4411F1182C16DABC00878AFE /* Trend */,
+				4411F11A2C16DAD500878AFE /* Resource */,
+			);
+			path = MediaProject;
+			sourceTree = "<group>";
+		};
+		4411F1172C16DAB300878AFE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				4411F1152C16D96800878AFE /* Trend.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		4411F1182C16DABC00878AFE /* Trend */ = {
+			isa = PBXGroup;
+			children = (
+				4411F1012C16D02C00878AFE /* TrendViewController.swift */,
+				4411F1252C16EC8F00878AFE /* TrendTableViewCell.swift */,
+			);
+			path = Trend;
+			sourceTree = "<group>";
+		};
+		4411F1192C16DAC700878AFE /* Application */ = {
+			isa = PBXGroup;
+			children = (
 				4411F0FD2C16D02C00878AFE /* AppDelegate.swift */,
 				4411F0FF2C16D02C00878AFE /* SceneDelegate.swift */,
-				4411F1012C16D02C00878AFE /* ViewController.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		4411F11A2C16DAD500878AFE /* Resource */ = {
+			isa = PBXGroup;
+			children = (
 				4411F1062C16D02D00878AFE /* Assets.xcassets */,
 				4411F1082C16D02D00878AFE /* LaunchScreen.storyboard */,
 				4411F10B2C16D02D00878AFE /* Info.plist */,
 			);
-			path = MediaProject;
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		4411F11B2C16DAF500878AFE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				4411F1132C16D8FD00878AFE /* APIKey.swift */,
+				4411F1272C16ECF800878AFE /* Reuseable.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +141,11 @@
 			dependencies = (
 			);
 			name = MediaProject;
+			packageProductDependencies = (
+				4411F11D2C16DB3200878AFE /* SnapKit */,
+				4411F1202C16DB5400878AFE /* Alamofire */,
+				4411F1232C16DB6300878AFE /* Kingfisher */,
+			);
 			productName = MediaProject;
 			productReference = 4411F0FA2C16D02C00878AFE /* MediaProject.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +174,11 @@
 				Base,
 			);
 			mainGroup = 4411F0F12C16D02C00878AFE;
+			packageReferences = (
+				4411F11C2C16DB3200878AFE /* XCRemoteSwiftPackageReference "SnapKit" */,
+				4411F11F2C16DB5400878AFE /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4411F1222C16DB6300878AFE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 4411F0FB2C16D02C00878AFE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,9 +206,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4411F1022C16D02C00878AFE /* ViewController.swift in Sources */,
+				4411F1022C16D02C00878AFE /* TrendViewController.swift in Sources */,
 				4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */,
+				4411F1162C16D96800878AFE /* Trend.swift in Sources */,
+				4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */,
+				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
 				4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */,
+				4411F1262C16EC8F00878AFE /* TrendTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,7 +358,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9M37U587ZT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MediaProject/Info.plist;
+				INFOPLIST_FILE = MediaProject/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -318,7 +390,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9M37U587ZT;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MediaProject/Info.plist;
+				INFOPLIST_FILE = MediaProject/Resource/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -363,6 +435,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4411F11C2C16DB3200878AFE /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		4411F11F2C16DB5400878AFE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+		4411F1222C16DB6300878AFE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4411F11D2C16DB3200878AFE /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4411F11C2C16DB3200878AFE /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		4411F1202C16DB5400878AFE /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4411F11F2C16DB5400878AFE /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		4411F1232C16DB6300878AFE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4411F1222C16DB6300878AFE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 4411F0F22C16D02C00878AFE /* Project object */;
 }
