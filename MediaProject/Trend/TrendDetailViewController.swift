@@ -66,7 +66,6 @@ final class TrendDetailViewController: UIViewController {
     
     private func setupNavi() {
         navigationItem.title = "출연/제작"
-        navigationController?.navigationBar.tintColor = .label
     }
     
     private func setupTableView() {

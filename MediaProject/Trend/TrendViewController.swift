@@ -33,6 +33,7 @@ final class TrendViewController: UIViewController {
     
     private func setupNavi() {
         navigationItem.title = ""
+        navigationController?.navigationBar.tintColor = .label
         
         let list = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(listBarButtonTapped))
         navigationItem.leftBarButtonItem = list
