@@ -10,6 +10,13 @@ import Foundation
 struct Search: Decodable {
     var page: Int
     let results: [SearchResult]
+    var totalPages: Int
+    
+    enum CodingKeys: String, CodingKey {
+        case page
+        case results
+        case totalPages = "total_pages"
+    }
 }
 
 struct SearchResult: Decodable {

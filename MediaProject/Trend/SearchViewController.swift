@@ -14,12 +14,10 @@ final class SearchViewController: UIViewController {
 
     //MARK: - Properties
     
-    var searchResults: [SearchResult] = [] {
-        didSet {
-            print(searchResults)
-        }
-    }
-    var page = 1
+    private var searchResults: [SearchResult] = []
+    private var page = 0
+    private var totalPage = 0
+    private var searchText: String = ""
     
     //MARK: - UI Components
     
@@ -35,7 +33,6 @@ final class SearchViewController: UIViewController {
         setupCollectionView()
         configureLayout()
         configureUI()
-        //callRequest(query: "신세계")
     }
     
     private func setupNavi() {
@@ -111,6 +108,7 @@ final class SearchViewController: UIViewController {
         AF.request(APIURL.searchAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Search.self) { response in
             switch response.result {
             case .success(let data):
+                self.totalPage = data.totalPages
                 self.searchResults.append(contentsOf: data.results)
                 
                 self.collectionView.reloadData()
@@ -129,7 +127,9 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {return}
+        self.searchText = text
         searchResults = []
+        self.page = 1
         callRequest(query: text)
         view.endEditing(true)
     }
@@ -163,6 +163,11 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
-        print(#function)
+        for item in indexPaths {
+            if item.row == self.searchResults.count - 3 && self.page < self.totalPage  {
+                self.page += 1
+                callRequest(query: self.searchText)
+            }
+        }
     }
 }

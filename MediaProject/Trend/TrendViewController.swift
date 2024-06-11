@@ -14,7 +14,7 @@ final class TrendViewController: UIViewController {
     
     //MARK: - Properties
     
-    var trends: [Trend] = []
+    private var trends: [Trend] = []
     
     //MARK: - UI Components
     

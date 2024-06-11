@@ -15,7 +15,7 @@ final class TrendDetailViewController: UIViewController {
 
     //MARK: - Properties
     
-    var credits: [Cast] = []
+    private var credits: [Cast] = []
     
     var mediaType: MediaType = .movie
     
