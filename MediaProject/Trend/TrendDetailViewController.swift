@@ -62,7 +62,6 @@ final class TrendDetailViewController: UIViewController {
         setupTableView()
         configureLayout()
         configureUI()
-        print(id)
     }
     
     private func setupNavi() {
