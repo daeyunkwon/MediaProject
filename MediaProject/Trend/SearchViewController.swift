@@ -18,6 +18,7 @@ final class SearchViewController: UIViewController {
     private var page = 0
     private var totalPage = 0
     private var searchText: String = ""
+    private var networkRequest: DataRequest?
     
     //MARK: - UI Components
     
@@ -105,7 +106,7 @@ final class SearchViewController: UIViewController {
             "Authorization": APIKey.apiKey
         ]
         
-        AF.request(APIURL.searchAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Search.self) { response in
+        self.networkRequest = AF.request(APIURL.searchAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Search.self) { response in
             switch response.result {
             case .success(let data):
                 self.totalPage = data.totalPages
@@ -126,7 +127,9 @@ final class SearchViewController: UIViewController {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {return}
+        guard var text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {return}
+        text = text.trimmingCharacters(in: .whitespaces)
+        
         if text == self.searchText {
             view.endEditing(true)
             return
