@@ -83,9 +83,6 @@ final class TrendDetailOverViewTableViewCell: UITableViewCell {
     //MARK: - Functions
     
     @objc func moreButtonTapped() {
-        
         self.delegate?.moreButtonTapped(for: self)
-        
-        
     }
 }
