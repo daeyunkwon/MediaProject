@@ -25,6 +25,9 @@
 		4411F12E2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F12D2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift */; };
 		4411F1302C1735BF00878AFE /* Credits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F12F2C1735BF00878AFE /* Credits.swift */; };
 		4411F1322C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1312C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift */; };
+		4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F13C2C183E6700878AFE /* SearchViewController.swift */; };
+		4411F13F2C18413800878AFE /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */; };
+		4411F1412C186BCC00878AFE /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1402C186BCC00878AFE /* Search.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +48,9 @@
 		4411F12D2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailCastTableViewCell.swift; sourceTree = "<group>"; };
 		4411F12F2C1735BF00878AFE /* Credits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Credits.swift; sourceTree = "<group>"; };
 		4411F1312C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendDetailOverViewCellDelegate.swift; sourceTree = "<group>"; };
+		4411F13C2C183E6700878AFE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
+		4411F1402C186BCC00878AFE /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 			children = (
 				4411F1152C16D96800878AFE /* Trend.swift */,
 				4411F12F2C1735BF00878AFE /* Credits.swift */,
+				4411F1402C186BCC00878AFE /* Search.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -107,6 +114,8 @@
 				4411F1292C1729D500878AFE /* TrendDetailViewController.swift */,
 				4411F12B2C172A0100878AFE /* TrendDetailOverViewTableViewCell.swift */,
 				4411F12D2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift */,
+				4411F13C2C183E6700878AFE /* SearchViewController.swift */,
+				4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -237,9 +246,12 @@
 				4411F1302C1735BF00878AFE /* Credits.swift in Sources */,
 				4411F1322C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift in Sources */,
 				4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */,
+				4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
 				4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */,
 				4411F1262C16EC8F00878AFE /* TrendTableViewCell.swift in Sources */,
+				4411F1412C186BCC00878AFE /* Search.swift in Sources */,
+				4411F13F2C18413800878AFE /* SearchCollectionViewCell.swift in Sources */,
 				4411F12E2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

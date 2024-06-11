@@ -90,7 +90,8 @@ final class TrendViewController: UIViewController {
     }
     
     @objc func searchBarButtonTapped() {
-        print(#function)
+        let vc = SearchViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
