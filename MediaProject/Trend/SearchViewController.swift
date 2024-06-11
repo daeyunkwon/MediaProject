@@ -127,11 +127,16 @@ final class SearchViewController: UIViewController {
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {return}
-        self.searchText = text
-        searchResults = []
-        self.page = 1
-        callRequest(query: text)
-        view.endEditing(true)
+        if text == self.searchText {
+            view.endEditing(true)
+            return
+        } else {
+            self.searchText = text
+            searchResults = []
+            self.page = 1
+            callRequest(query: text)
+            view.endEditing(true)
+        }
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
