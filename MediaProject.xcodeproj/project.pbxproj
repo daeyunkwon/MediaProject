@@ -31,6 +31,7 @@
 		4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */; };
 		4411F14F2C197F8600878AFE /* PrimaryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14E2C197F8600878AFE /* PrimaryImageView.swift */; };
 		4411F1512C1980CD00878AFE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1502C1980CD00878AFE /* Constant.swift */; };
+		4411F1532C19836400878AFE /* TrendTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1522C19836400878AFE /* TrendTableViewCellDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRadiusBackView.swift; sourceTree = "<group>"; };
 		4411F14E2C197F8600878AFE /* PrimaryImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryImageView.swift; sourceTree = "<group>"; };
 		4411F1502C1980CD00878AFE /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		4411F1522C19836400878AFE /* TrendTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCellDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				4411F1312C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift */,
+				4411F1522C19836400878AFE /* TrendTableViewCellDelegate.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				4411F1302C1735BF00878AFE /* Credits.swift in Sources */,
 				4411F1322C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift in Sources */,
 				4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */,
+				4411F1532C19836400878AFE /* TrendTableViewCellDelegate.swift in Sources */,
 				4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
 				4411F1512C1980CD00878AFE /* Constant.swift in Sources */,

@@ -27,6 +27,8 @@ final class TrendTableViewCell: UITableViewCell {
         }
     }
     
+    weak var delegate: TrendTableViewCellDelegate?
+    
     //MARK: - UI Components
     
     private let backView: UIView = ShadowRadiusBackView()
@@ -239,6 +241,6 @@ final class TrendTableViewCell: UITableViewCell {
     //MARK: - Functions
     
     @objc func clipButtonTapped() {
-        print(#function)
+        self.delegate?.clipButtonTapped(for: self)
     }
 }

@@ -109,6 +109,7 @@ extension TrendViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier, for: indexPath) as! TrendTableViewCell
+        cell.delegate = self
         cell.trend = self.trends[indexPath.row]
         return cell
     }
@@ -132,3 +133,10 @@ extension TrendViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 
+//MARK: - TrendTableViewCellDelegate
+
+extension TrendViewController: TrendTableViewCellDelegate {
+    func clipButtonTapped(for cell: TrendTableViewCell) {
+        print(#function)
+    }
+}
