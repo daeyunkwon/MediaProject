@@ -84,12 +84,15 @@ final class SearchViewController: UIViewController {
     
     private func collectionViewLayout() -> UICollectionViewFlowLayout {
         let layout = UICollectionViewFlowLayout()
-        let width = UIScreen.main.bounds.width - 40
-        layout.itemSize = CGSize(width: width / 3, height: 150)
-        layout.scrollDirection = .vertical //스크롤 방향
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+        let cellCount: CGFloat = 3
+        let spacing: CGFloat = 10
+        let sectionInset: CGFloat = 10
+        let width = UIScreen.main.bounds.width - ((spacing * (cellCount - 1) + sectionInset * 2))
+        layout.itemSize = CGSize(width: width / cellCount, height: 150)
+        layout.scrollDirection = .vertical
+        layout.minimumInteritemSpacing = spacing
+        layout.minimumLineSpacing = spacing
+        layout.sectionInset = UIEdgeInsets(top: sectionInset, left: sectionInset, bottom: sectionInset, right: sectionInset)
         return layout
     }
     
