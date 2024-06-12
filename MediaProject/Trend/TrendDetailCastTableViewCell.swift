@@ -28,11 +28,9 @@ final class TrendDetailCastTableViewCell: UITableViewCell {
     //MARK: - UI Components
     
     private let profileImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
+        let iv = PrimaryImageView(frame: .zero)
         iv.layer.cornerRadius = 10
         iv.clipsToBounds = true
-        iv.backgroundColor = .lightGray
         return iv
     }()
     

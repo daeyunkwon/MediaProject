@@ -30,6 +30,7 @@
 		4411F1412C186BCC00878AFE /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1402C186BCC00878AFE /* Search.swift */; };
 		4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */; };
 		4411F14F2C197F8600878AFE /* PrimaryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14E2C197F8600878AFE /* PrimaryImageView.swift */; };
+		4411F1512C1980CD00878AFE /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1502C1980CD00878AFE /* Constant.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		4411F1402C186BCC00878AFE /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRadiusBackView.swift; sourceTree = "<group>"; };
 		4411F14E2C197F8600878AFE /* PrimaryImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryImageView.swift; sourceTree = "<group>"; };
+		4411F1502C1980CD00878AFE /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			children = (
 				4411F1132C16D8FD00878AFE /* APIKey.swift */,
 				4411F1272C16ECF800878AFE /* Reuseable.swift */,
+				4411F1502C1980CD00878AFE /* Constant.swift */,
 				4411F1332C174C8100878AFE /* Protocol */,
 				4411F14B2C197CE300878AFE /* CustomView */,
 			);
@@ -263,6 +266,7 @@
 				4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */,
 				4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
+				4411F1512C1980CD00878AFE /* Constant.swift in Sources */,
 				4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */,
 				4411F1262C16EC8F00878AFE /* TrendTableViewCell.swift in Sources */,
 				4411F1412C186BCC00878AFE /* Search.swift in Sources */,

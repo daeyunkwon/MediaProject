@@ -58,8 +58,7 @@ final class TrendTableViewCell: UITableViewCell {
     private lazy var clipButton: UIButton = {
         let btn = UIButton(type: .system)
         btn.setTitle("", for: .normal)
-        let config = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .small)
-        let image = UIImage(systemName: "paperclip", withConfiguration: config)
+        let image = Constant.SymbolSize.smallSize(systemName: "paperclip")
         btn.setImage(image, for: .normal)
         btn.tintColor = .black
         btn.backgroundColor = .white
