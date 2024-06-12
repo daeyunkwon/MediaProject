@@ -29,16 +29,7 @@ final class TrendTableViewCell: UITableViewCell {
     
     //MARK: - UI Components
     
-    private let backView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .systemBackground
-        view.layer.cornerRadius = 10
-        view.layer.shadowColor = UIColor.gray.cgColor
-        view.layer.shadowOffset = CGSize(width: 0, height: 1)
-        view.layer.shadowOpacity = 1
-        view.layer.shadowRadius = 8
-        return view
-    }()
+    private let backView: UIView = ShadowRadiusBackView()
     
     private let releaseDateLabel: UILabel = {
         let label = UILabel()

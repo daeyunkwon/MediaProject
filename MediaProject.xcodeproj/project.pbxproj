@@ -28,6 +28,7 @@
 		4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F13C2C183E6700878AFE /* SearchViewController.swift */; };
 		4411F13F2C18413800878AFE /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */; };
 		4411F1412C186BCC00878AFE /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1402C186BCC00878AFE /* Search.swift */; };
+		4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		4411F13C2C183E6700878AFE /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		4411F1402C186BCC00878AFE /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRadiusBackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 				4411F1132C16D8FD00878AFE /* APIKey.swift */,
 				4411F1272C16ECF800878AFE /* Reuseable.swift */,
 				4411F1332C174C8100878AFE /* Protocol */,
+				4411F14B2C197CE300878AFE /* CustomView */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -155,6 +158,14 @@
 				4411F1312C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		4411F14B2C197CE300878AFE /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */,
+			);
+			path = CustomView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -253,6 +264,7 @@
 				4411F1412C186BCC00878AFE /* Search.swift in Sources */,
 				4411F13F2C18413800878AFE /* SearchCollectionViewCell.swift in Sources */,
 				4411F12E2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift in Sources */,
+				4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
