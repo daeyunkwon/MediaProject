@@ -25,11 +25,8 @@ final class SearchCollectionViewCell: UICollectionViewCell {
     //MARK: - UI Components
     
     private let mainImageView: UIImageView = {
-        let iv = UIImageView()
-        iv.contentMode = .scaleAspectFill
-        iv.layer.cornerRadius = 5
+        let iv = PrimaryImageView(frame: .zero)
         iv.clipsToBounds = true
-        iv.backgroundColor = .lightGray
         return iv
     }()
     

@@ -29,6 +29,7 @@
 		4411F13F2C18413800878AFE /* SearchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */; };
 		4411F1412C186BCC00878AFE /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1402C186BCC00878AFE /* Search.swift */; };
 		4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */; };
+		4411F14F2C197F8600878AFE /* PrimaryImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F14E2C197F8600878AFE /* PrimaryImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,7 @@
 		4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCollectionViewCell.swift; sourceTree = "<group>"; };
 		4411F1402C186BCC00878AFE /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShadowRadiusBackView.swift; sourceTree = "<group>"; };
+		4411F14E2C197F8600878AFE /* PrimaryImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				4411F14C2C197D2800878AFE /* ShadowRadiusBackView.swift */,
+				4411F14E2C197F8600878AFE /* PrimaryImageView.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4411F12C2C172A0100878AFE /* TrendDetailOverViewTableViewCell.swift in Sources */,
+				4411F14F2C197F8600878AFE /* PrimaryImageView.swift in Sources */,
 				4411F1022C16D02C00878AFE /* TrendViewController.swift in Sources */,
 				4411F12A2C1729D500878AFE /* TrendDetailViewController.swift in Sources */,
 				4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */,
