@@ -95,35 +95,6 @@ final class SearchViewController: UIViewController {
         layout.sectionInset = UIEdgeInsets(top: sectionInset, left: sectionInset, bottom: sectionInset, right: sectionInset)
         return layout
     }
-    
-    private func callRequest(query: String) {
-        let param: Parameters = [
-            "query": query,
-            "page": self.page,
-            "lagnuage": "ko-KR",
-            "include_adult": false
-        ]
-        
-        let header: HTTPHeaders = [
-            "accept": "application/json",
-            "Authorization": APIKey.apiKey
-        ]
-        
-        self.networkRequest = AF.request(APIURL.searchAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Search.self) { response in
-            switch response.result {
-            case .success(let data):
-                self.totalPage = data.totalPages
-                self.searchResults.append(contentsOf: data.results)
-                
-                self.collectionView.reloadData()
-                if self.page == 1 && self.searchResults.count >= 1 {
-                    self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
-                }
-            case .failure(let error):
-                print(error)
-            }
-        }
-    }
 }
 
 //MARK: - UISearchBarDelegate
@@ -140,7 +111,16 @@ extension SearchViewController: UISearchBarDelegate {
             self.searchText = text
             searchResults = []
             self.page = 1
-            callRequest(query: text)
+            
+            NetworkManager.shared.fetchSearch(query: text, page: self.page) { data in
+                self.totalPage = data.totalPages
+                self.searchResults.append(contentsOf: data.results)
+                
+                self.collectionView.reloadData()
+                if self.page == 1 && self.searchResults.count >= 1 {
+                    self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                }
+            }
             view.endEditing(true)
         }
     }
@@ -177,7 +157,15 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             if item.row == self.searchResults.count - 3 && self.page < self.totalPage  {
                 self.page += 1
-                callRequest(query: self.searchText)
+                NetworkManager.shared.fetchSearch(query: self.searchText, page: self.page) { data in
+                    self.totalPage = data.totalPages
+                    self.searchResults.append(contentsOf: data.results)
+                    
+                    self.collectionView.reloadData()
+                    if self.page == 1 && self.searchResults.count >= 1 {
+                        self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
+                    }
+                }
             }
         }
     }

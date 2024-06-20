@@ -65,6 +65,29 @@ final class NetworkManager {
         }
     }
     
+    func fetchSearch(query: String, page: Int, completion: @escaping (Search) -> Void) {
+        let param: Parameters = [
+            "query": query,
+            "page": page,
+            "lagnuage": "ko-KR",
+            "include_adult": false
+        ]
+        
+        let header: HTTPHeaders = [
+            "accept": "application/json",
+            "Authorization": APIKey.apiKey
+        ]
+        
+        AF.request(APIURL.searchAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Search.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     
     
     
