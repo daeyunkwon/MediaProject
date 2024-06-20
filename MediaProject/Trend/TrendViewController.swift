@@ -24,7 +24,10 @@ final class TrendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRequest()
+        NetworkManager.shared.fetchTrendData { trendData in
+            self.trends = trendData.results
+            self.tableView.reloadData()
+        }
         setupNavi()
         setupTableView()
         configureLayout()
@@ -63,28 +66,6 @@ final class TrendViewController: UIViewController {
     }
     
     //MARK: - Functions
-    
-    private func callRequest() {
-        let param: Parameters = [
-            "language": "ko-KR"
-        ]
-        
-        let header: HTTPHeaders = [
-            "accept": "application/json",
-            "Authorization": APIKey.apiKey
-        ]
-        
-        AF.request(APIURL.trendAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: TrendData.self) { response in
-            switch response.result {
-            case .success(let data):
-                self.trends = data.results
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(response.response?.statusCode ?? 0)
-                print(error)
-            }
-        }
-    }
     
     @objc func listBarButtonTapped() {
         print(#function)

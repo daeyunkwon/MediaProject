@@ -44,6 +44,27 @@ final class NetworkManager {
         }
     }
     
+    func fetchTrendData(completion: @escaping (TrendData) -> Void) {
+        let param: Parameters = [
+            "language": "ko-KR"
+        ]
+        
+        let header: HTTPHeaders = [
+            "accept": "application/json",
+            "Authorization": APIKey.apiKey
+        ]
+        
+        AF.request(APIURL.trendAPIURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: TrendData.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                print(response.response?.statusCode ?? 0)
+                print(error)
+            }
+        }
+    }
+    
     
     
     
