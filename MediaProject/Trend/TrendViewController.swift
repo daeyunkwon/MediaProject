@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Alamofire
 import SnapKit
 
 final class TrendViewController: UIViewController {

@@ -7,7 +7,6 @@
 
 import UIKit
 
-import Alamofire
 import SnapKit
 
 final class SearchViewController: UIViewController {
@@ -18,7 +17,6 @@ final class SearchViewController: UIViewController {
     private var page = 0
     private var totalPage = 0
     private var searchText: String = ""
-    private var networkRequest: DataRequest?
     
     //MARK: - UI Components
     
