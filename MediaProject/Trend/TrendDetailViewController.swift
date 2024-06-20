@@ -56,7 +56,10 @@ final class TrendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        callRequest()
+        NetworkManager.shared.fetchCredits(mediaType: mediaType, id: id) { credits in
+            self.credits = credits.cast
+            self.tableView.reloadData()
+        }
         setupNavi()
         setupTableView()
         configureLayout()
@@ -114,39 +117,6 @@ final class TrendDetailViewController: UIViewController {
         backImageView.kf.setImage(with: APIURL.makeImageURL(path: backPosterImagePath ?? ""))
         
         posterImageView.kf.setImage(with: APIURL.makeImageURL(path: posterImagePath ?? ""))
-    }
-    
-    //MARK: - Functions
-    
-    private func callRequest() {
-        let param: Parameters = [
-            "language": "ko-KR"
-        ]
-        
-        let header: HTTPHeaders = [
-            "accept": "application/json",
-            "Authorization": APIKey.apiKey
-        ]
-        
-        var url: URL?
-        switch mediaType {
-        case .movie:
-            url = APIURL.makeMovieCreditsAPIURL(with: String(id))
-        case .tv:
-            url = APIURL.makeTVCreditsAPIURL(with: String(id))
-        }
-        guard let safeURL = url else {return}
-        
-        AF.request(safeURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Credits.self) { response in
-            switch response.result {
-            case .success(let data):
-                self.credits = data.cast
-                self.tableView.reloadData()
-            case .failure(let error):
-                print(response.response?.statusCode ?? 0)
-                print(error)
-            }
-        }
     }
 }
 
