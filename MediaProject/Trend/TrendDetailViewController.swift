@@ -67,6 +67,14 @@ final class TrendDetailViewController: UIViewController {
     
     private func setupNavi() {
         navigationItem.title = "출연/제작"
+        
+        let button = UIButton(type: .system)
+        button.setTitle("비슷한 콘텐츠", for: .normal)
+        button.setImage(UIImage(systemName: "plus.magnifyingglass")?.applyingSymbolConfiguration(.init(font: UIFont.systemFont(ofSize: 13), scale: .large)), for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 13)
+        button.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
+        let rightButton = UIBarButtonItem(customView: button)
+        navigationItem.rightBarButtonItem = rightButton
     }
     
     private func setupTableView() {
@@ -116,6 +124,12 @@ final class TrendDetailViewController: UIViewController {
         backImageView.kf.setImage(with: APIURL.makeImageURL(path: backPosterImagePath ?? ""))
         
         posterImageView.kf.setImage(with: APIURL.makeImageURL(path: posterImagePath ?? ""))
+    }
+    
+    //MARK: - Functions
+    
+    @objc func rightBarButtonTapped() {
+        print(#function)
     }
 }
 
