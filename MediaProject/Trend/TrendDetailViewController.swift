@@ -138,6 +138,7 @@ final class TrendDetailViewController: UIViewController {
     
     @objc func rightBarButtonTapped() {
         let vc = SimilarViewController()
+        vc.mediaTitle = self.titleText
         navigationController?.pushViewController(vc, animated: true)
     }
 }
