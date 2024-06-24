@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		440027072C296C9E005D4F0B /* SimilarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440027062C296C9E005D4F0B /* SimilarViewController.swift */; };
+		440027092C297769005D4F0B /* SimilarCollectionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440027082C297769005D4F0B /* SimilarCollectionTableViewCell.swift */; };
+		4400270B2C297A42005D4F0B /* SimilarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4400270A2C297A42005D4F0B /* SimilarCollectionViewCell.swift */; };
+		4400270D2C29AF9D005D4F0B /* SimilarResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4400270C2C29AF9D005D4F0B /* SimilarResult.swift */; };
+		4400270F2C29BDAC005D4F0B /* Recommendation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4400270E2C29BDAC005D4F0B /* Recommendation.swift */; };
+		440027132C29C864005D4F0B /* Poster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440027122C29C864005D4F0B /* Poster.swift */; };
 		4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F0FD2C16D02C00878AFE /* AppDelegate.swift */; };
 		4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F0FF2C16D02C00878AFE /* SceneDelegate.swift */; };
 		4411F1022C16D02C00878AFE /* TrendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1012C16D02C00878AFE /* TrendViewController.swift */; };
@@ -38,6 +43,11 @@
 
 /* Begin PBXFileReference section */
 		440027062C296C9E005D4F0B /* SimilarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarViewController.swift; sourceTree = "<group>"; };
+		440027082C297769005D4F0B /* SimilarCollectionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarCollectionTableViewCell.swift; sourceTree = "<group>"; };
+		4400270A2C297A42005D4F0B /* SimilarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarCollectionViewCell.swift; sourceTree = "<group>"; };
+		4400270C2C29AF9D005D4F0B /* SimilarResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimilarResult.swift; sourceTree = "<group>"; };
+		4400270E2C29BDAC005D4F0B /* Recommendation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendation.swift; sourceTree = "<group>"; };
+		440027122C29C864005D4F0B /* Poster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Poster.swift; sourceTree = "<group>"; };
 		4411F0FA2C16D02C00878AFE /* MediaProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MediaProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4411F0FD2C16D02C00878AFE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4411F0FF2C16D02C00878AFE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -114,6 +124,9 @@
 				4411F1152C16D96800878AFE /* Trend.swift */,
 				4411F12F2C1735BF00878AFE /* Credits.swift */,
 				4411F1402C186BCC00878AFE /* Search.swift */,
+				4400270C2C29AF9D005D4F0B /* SimilarResult.swift */,
+				4400270E2C29BDAC005D4F0B /* Recommendation.swift */,
+				440027122C29C864005D4F0B /* Poster.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -129,6 +142,8 @@
 				4411F13C2C183E6700878AFE /* SearchViewController.swift */,
 				4411F13E2C18413800878AFE /* SearchCollectionViewCell.swift */,
 				440027062C296C9E005D4F0B /* SimilarViewController.swift */,
+				440027082C297769005D4F0B /* SimilarCollectionTableViewCell.swift */,
+				4400270A2C297A42005D4F0B /* SimilarCollectionViewCell.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -265,17 +280,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				4411F12C2C172A0100878AFE /* TrendDetailOverViewTableViewCell.swift in Sources */,
+				440027092C297769005D4F0B /* SimilarCollectionTableViewCell.swift in Sources */,
 				4411F14F2C197F8600878AFE /* PrimaryImageView.swift in Sources */,
 				4411F1022C16D02C00878AFE /* TrendViewController.swift in Sources */,
 				4411F12A2C1729D500878AFE /* TrendDetailViewController.swift in Sources */,
 				4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */,
+				440027132C29C864005D4F0B /* Poster.swift in Sources */,
 				4411F1162C16D96800878AFE /* Trend.swift in Sources */,
 				4411F1302C1735BF00878AFE /* Credits.swift in Sources */,
 				4411F1322C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift in Sources */,
+				4400270D2C29AF9D005D4F0B /* SimilarResult.swift in Sources */,
 				4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */,
 				4411F1532C19836400878AFE /* TrendTableViewCellDelegate.swift in Sources */,
 				4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
+				4400270B2C297A42005D4F0B /* SimilarCollectionViewCell.swift in Sources */,
+				4400270F2C29BDAC005D4F0B /* Recommendation.swift in Sources */,
 				443A3E152C2410A900C426FD /* NetworkManager.swift in Sources */,
 				4411F1512C1980CD00878AFE /* Constant.swift in Sources */,
 				4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */,

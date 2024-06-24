@@ -89,8 +89,93 @@ final class NetworkManager {
         }
     }
     
+    func fetchSimilar(mediaType: MediaType, id: Int, completion: @escaping (Similar) -> Void) {
+        let param: Parameters = [
+            "language": "ko-KR"
+        ]
+        
+        let header: HTTPHeaders = [
+            "accept": "application/json",
+            "Authorization": APIKey.apiKey
+        ]
+        
+        var url: URL?
+        switch mediaType {
+        case .movie:
+            url = APIURL.makeMovieSimilarAPIURL(with: String(id))
+        case .tv:
+            url = APIURL.makeTVSimilarAPIURL(with: String(id))
+        }
+        guard let safeURL = url else {return}
+        
+        AF.request(safeURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Similar.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                print(response.response?.statusCode ?? 0)
+                print(error)
+            }
+        }
+    }
     
+    func fetchRecommendation(mediaType: MediaType, id: Int, completion: @escaping (Recommendation) -> Void) {
+        let param: Parameters = [
+            "language": "ko-KR"
+        ]
+        
+        let header: HTTPHeaders = [
+            "accept": "application/json",
+            "Authorization": APIKey.apiKey
+        ]
+        
+        var url: URL?
+        switch mediaType {
+        case .movie:
+            url = APIURL.makeMovieRecommendationsAPIURL(with: String(id))
+        case .tv:
+            url = APIURL.makeTVRecommendationsAPIURL(with: String(id))
+        }
+        guard let safeURL = url else {return}
+        
+        AF.request(safeURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Recommendation.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                print(response.response?.statusCode ?? 0)
+                print(error)
+            }
+        }
+    }
     
+    func fetchPoster(mediaType: MediaType, id: Int, completion: @escaping (Poster) -> Void) {
+        let param: Parameters = [:]
+        
+        let header: HTTPHeaders = [
+            "accept": "application/json",
+            "Authorization": APIKey.apiKey
+        ]
+        
+        var url: URL?
+        switch mediaType {
+        case .movie:
+            url = APIURL.makeMoviePosterAPIURL(with: String(id))
+        case .tv:
+            url = APIURL.makeTVPosterAPIURL(with: String(id))
+        }
+        guard let safeURL = url else {return}
+        
+        AF.request(safeURL, method: .get, parameters: param, encoding: URLEncoding.queryString, headers: header).responseDecodable(of: Poster.self) { response in
+            switch response.result {
+            case .success(let data):
+                completion(data)
+            case .failure(let error):
+                print(response.response?.statusCode ?? 0)
+                print(error)
+            }
+        }
+    }
     
     
 }
