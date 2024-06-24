@@ -53,6 +53,16 @@ final class TrendDetailViewController: UIViewController {
     
     //MARK: - Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "출연/제작"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.title = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NetworkManager.shared.fetchCredits(mediaType: mediaType, id: id) { credits in
@@ -66,8 +76,6 @@ final class TrendDetailViewController: UIViewController {
     }
     
     private func setupNavi() {
-        navigationItem.title = "출연/제작"
-        
         let button = UIButton(type: .system)
         button.setTitle("비슷한 콘텐츠", for: .normal)
         button.setImage(UIImage(systemName: "plus.magnifyingglass")?.applyingSymbolConfiguration(.init(font: UIFont.systemFont(ofSize: 13), scale: .large)), for: .normal)
@@ -129,7 +137,8 @@ final class TrendDetailViewController: UIViewController {
     //MARK: - Functions
     
     @objc func rightBarButtonTapped() {
-        print(#function)
+        let vc = SimilarViewController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
