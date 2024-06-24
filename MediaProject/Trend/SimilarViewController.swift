@@ -142,6 +142,7 @@ extension SimilarViewController: UITableViewDataSource, UITableViewDelegate {
             break
         }
         
+        cell.selectionStyle = .none
         return cell
     }
 }
