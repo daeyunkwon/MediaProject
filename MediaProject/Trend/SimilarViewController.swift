@@ -53,22 +53,42 @@ final class SimilarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        NetworkManager.shared.fetchSimilar(mediaType: self.mediaType, id: self.id) { data in
-            self.similarList = data.results
-            self.tableView.reloadData()
-        }
-        NetworkManager.shared.fetchRecommendation(mediaType: self.mediaType, id: self.id) { data in
-            self.recommendationList = data.results
-            self.tableView.reloadData()
-        }
-        NetworkManager.shared.fetchPoster(mediaType: self.mediaType, id: self.id) { data in
-            self.posterList = data.backdrops
-            self.tableView.reloadData()
-        }
+        self.fetchData()
         setupTableView()
         configureLayout()
         configureUI()
+    }
+    
+    private func fetchData() {
+        let group = DispatchGroup()
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.fetchSimilar(mediaType: self.mediaType, id: self.id) { data in
+                self.similarList = data.results
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.fetchRecommendation(mediaType: self.mediaType, id: self.id) { data in
+                self.recommendationList = data.results
+                group.leave()
+            }
+        }
+        
+        group.enter()
+        DispatchQueue.global().async(group: group) {
+            NetworkManager.shared.fetchPoster(mediaType: self.mediaType, id: self.id) { data in
+                self.posterList = data.backdrops
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+        }
     }
     
     private func setupTableView() {
