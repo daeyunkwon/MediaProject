@@ -11,13 +11,7 @@ protocol Reuseable: AnyObject {
     static var identifier: String {get}
 }
 
-extension UITableViewCell: Reuseable {
-    static var identifier: String {
-        return String(describing: self)
-    }
-}
-
-extension UICollectionViewCell: Reuseable {
+extension UIView: Reuseable {
     static var identifier: String {
         return String(describing: self)
     }
