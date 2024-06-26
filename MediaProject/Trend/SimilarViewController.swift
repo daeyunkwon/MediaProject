@@ -64,25 +64,49 @@ final class SimilarViewController: UIViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.fetchSimilar(mediaType: self.mediaType, id: self.id) { data in
-                self.similarList = data.results
-                group.leave()
+            NetworkManager.shared.fetchData(api: .similar(id: self.id, mediaType: self.mediaType)) { (data: Similar?, error) in
+                if error != nil {
+                    self.showNetworkFailAlert(message: error ?? "")
+                    group.leave()
+                    return
+                }
+                
+                if let safeData = data {
+                    self.similarList = safeData.results
+                    group.leave()
+                }
             }
         }
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.fetchRecommendation(mediaType: self.mediaType, id: self.id) { data in
-                self.recommendationList = data.results
-                group.leave()
+            NetworkManager.shared.fetchData(api: .recommendation(id: self.id, mediaType: self.mediaType)) { (data: Recommendation?, error) in
+                if error != nil {
+                    self.showNetworkFailAlert(message: error ?? "")
+                    group.leave()
+                    return
+                }
+                
+                if let safeData = data {
+                    self.recommendationList = safeData.results
+                    group.leave()
+                }
             }
         }
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.fetchPoster(mediaType: self.mediaType, id: self.id) { data in
-                self.posterList = data.backdrops
-                group.leave()
+            NetworkManager.shared.fetchData(api: .poster(id: self.id, mediaType: self.mediaType)) { (data: Poster?, error) in
+                if error != nil {
+                    self.showNetworkFailAlert(message: error ?? "")
+                    group.leave()
+                    return
+                }
+                
+                if let safeData = data {
+                    self.posterList = safeData.backdrops
+                    group.leave()
+                }
             }
         }
         

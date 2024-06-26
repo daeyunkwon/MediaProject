@@ -23,9 +23,17 @@ final class TrendViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkManager.shared.fetchTrendData { trendData in
-            self.trends = trendData.results
-            self.tableView.reloadData()
+        
+        NetworkManager.shared.fetchData(api: .trend) { (data: TrendData?, error) in
+            if error != nil {
+                self.showNetworkFailAlert(message: error ?? "")
+                return
+            }
+            
+            if let safeData = data?.results {
+                self.trends = safeData
+                self.tableView.reloadData()
+            }
         }
         setupNavi()
         setupTableView()

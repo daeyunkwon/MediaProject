@@ -65,9 +65,17 @@ final class TrendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        NetworkManager.shared.fetchCredits(mediaType: mediaType, id: id) { credits in
-            self.credits = credits.cast
-            self.tableView.reloadData()
+
+        NetworkManager.shared.fetchData(api: .credits(id: self.id, mediaType: self.mediaType)) { (data: Credits?, error) in
+            if error != nil {
+                self.showNetworkFailAlert(message: error ?? "")
+                return
+            }
+            
+            if let safeData = data?.cast {
+                self.credits = safeData
+                self.tableView.reloadData()
+            }
         }
         setupNavi()
         setupTableView()
