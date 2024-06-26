@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class TrendDetailViewController: UIViewController {
+final class TrendDetailViewController: BaseViewController {
 
     //MARK: - Properties
     
@@ -65,7 +65,9 @@ final class TrendDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    }
+    
+    override func fetchData() {
         NetworkManager.shared.fetchData(api: .credits(id: self.id, mediaType: self.mediaType)) { (data: Credits?, error) in
             if error != nil {
                 self.showNetworkFailAlert(message: error ?? "")
@@ -77,13 +79,9 @@ final class TrendDetailViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        setupNavi()
-        setupTableView()
-        configureLayout()
-        configureUI()
     }
     
-    private func setupNavi() {
+    override func setupNavi() {
         let button = UIButton(type: .system)
         button.setTitle("비슷한 콘텐츠", for: .normal)
         button.setImage(UIImage(systemName: "plus.magnifyingglass")?.applyingSymbolConfiguration(.init(font: UIFont.systemFont(ofSize: 13), scale: .large)), for: .normal)
@@ -93,14 +91,14 @@ final class TrendDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = rightButton
     }
     
-    private func setupTableView() {
+    override func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TrendDetailOverViewTableViewCell.self, forCellReuseIdentifier: TrendDetailOverViewTableViewCell.identifier)
         tableView.register(TrendDetailCastTableViewCell.self, forCellReuseIdentifier: TrendDetailCastTableViewCell.identifier)
     }
     
-    private func configureLayout() {
+    override func configureLayout() {
         view.addSubview(backImageView)
         backImageView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
@@ -132,8 +130,8 @@ final class TrendDetailViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
+    override func configureUI() {
+        super.configureUI()
         tableView.backgroundColor = .systemBackground
         self.mediaTitleLabel.text = titleText
         
@@ -149,7 +147,7 @@ final class TrendDetailViewController: UIViewController {
         vc.mediaTitle = self.titleText
         vc.mediaType = self.mediaType
         vc.id = self.id
-        navigationController?.pushViewController(vc, animated: true)
+        pushVC(destination: vc)
     }
 }
 

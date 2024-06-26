@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: BaseViewController {
 
     //MARK: - Properties
     
@@ -27,14 +27,10 @@ final class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavi()
         setupSearchBar()
-        setupCollectionView()
-        configureLayout()
-        configureUI()
     }
     
-    private func setupNavi() {
+    override func setupNavi() {
         navigationItem.title = "검색"
     }
     
@@ -46,14 +42,14 @@ final class SearchViewController: UIViewController {
         searchBar.backgroundImage = UIImage()
     }
     
-    private func setupCollectionView() {
+    override func setupCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.prefetchDataSource = self
         collectionView.register(SearchCollectionViewCell.self, forCellWithReuseIdentifier: SearchCollectionViewCell.identifier)
     }
     
-    private func configureLayout() {
+    override func configureLayout() {
         view.addSubview(searchBar)
         searchBar.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide)
@@ -68,8 +64,8 @@ final class SearchViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
+    override func configureUI() {
+        super.configureUI()
         collectionView.backgroundColor = .systemBackground
     }
     

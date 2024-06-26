@@ -11,13 +11,27 @@ class BaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fetchData()
+        setupNavi()
+        setupTableView()
+        setupCollectionView()
         configureLayout()
         configureUI()
     }
     
+    func fetchData() {}
+    
+    func setupNavi() {}
+    
+    func setupTableView() {}
+    
+    func setupCollectionView() {}
+    
     func configureLayout() {}
     
-    func configureUI() {}
+    func configureUI() {
+        view.backgroundColor = .systemBackground
+    }
     
     func showAlert(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -29,5 +43,13 @@ class BaseViewController: UIViewController {
     func showNetworkFailAlert(message: String) {
         let alert = UIAlertController(title: "네트워크 불안정", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "확인", style: .cancel))
+    }
+    
+    func pushVC(destination: UIViewController) {
+        self.navigationController?.pushViewController(destination, animated: true)
+    }
+    
+    func popVC() {
+        self.navigationController?.popViewController(animated: true)
     }
 }

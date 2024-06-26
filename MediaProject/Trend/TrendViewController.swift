@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class TrendViewController: UIViewController {
+final class TrendViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -24,6 +24,9 @@ final class TrendViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func fetchData() {
         NetworkManager.shared.fetchData(api: .trend) { (data: TrendData?, error) in
             if error != nil {
                 self.showNetworkFailAlert(message: error ?? "")
@@ -35,13 +38,9 @@ final class TrendViewController: UIViewController {
                 self.tableView.reloadData()
             }
         }
-        setupNavi()
-        setupTableView()
-        configureLayout()
-        configureUI()
     }
     
-    private func setupNavi() {
+    override func setupNavi() {
         navigationItem.title = ""
         navigationController?.navigationBar.tintColor = .label
         
@@ -52,14 +51,14 @@ final class TrendViewController: UIViewController {
         navigationItem.rightBarButtonItem = search
     }
     
-    private func setupTableView() {
+    override func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(TrendTableViewCell.self, forCellReuseIdentifier: TrendTableViewCell.identifier)
         tableView.separatorStyle = .none
     }
     
-    private func configureLayout() {
+    override func configureLayout() {
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -67,8 +66,8 @@ final class TrendViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
+    override func configureUI() {
+        super.configureUI()
         tableView.backgroundColor = .systemBackground
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ShadowRadiusBackView: UIView {
+final class ShadowRadiusBackView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

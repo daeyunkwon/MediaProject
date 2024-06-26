@@ -9,7 +9,7 @@ import UIKit
 
 import SnapKit
 
-final class SimilarViewController: UIViewController {
+final class SimilarViewController: BaseViewController {
     
     //MARK: - Properties
     
@@ -53,13 +53,9 @@ final class SimilarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.fetchData()
-        setupTableView()
-        configureLayout()
-        configureUI()
     }
     
-    private func fetchData() {
+    override func fetchData() {
         let group = DispatchGroup()
         
         group.enter()
@@ -115,14 +111,14 @@ final class SimilarViewController: UIViewController {
         }
     }
     
-    private func setupTableView() {
+    override func setupTableView() {
         tableView.separatorStyle = .none
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(SimilarCollectionTableViewCell.self, forCellReuseIdentifier: SimilarCollectionTableViewCell.identifier)
     }
     
-    private func configureLayout() {
+    override func configureLayout() {
         view.addSubview(mediaTitleLabel)
         mediaTitleLabel.snp.makeConstraints { make in
             make.top.horizontalEdges.equalTo(view.safeAreaLayoutGuide).inset(10)
@@ -136,8 +132,8 @@ final class SimilarViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
-        view.backgroundColor = .systemBackground
+    override func configureUI() {
+        super.configureUI()
         mediaTitleLabel.text = mediaTitle
     }
 }
