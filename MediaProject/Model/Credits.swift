@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct Credits: Codable {
+struct Credits: Decodable {
     let cast: [Cast]
 }
 
-struct Cast: Codable {
+struct Cast: Decodable {
     let actorName: String?
     let characterName: String?
     let profilePath: String?

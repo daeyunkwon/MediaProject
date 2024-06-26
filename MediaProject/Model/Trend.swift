@@ -12,11 +12,11 @@ enum MediaType {
     case tv
 }
 
-struct TrendData: Codable {
+struct TrendData: Decodable {
     let results: [Trend]
 }
 
-struct Trend: Codable {
+struct Trend: Decodable {
     let id: Int?
     let posterPath: String?
     let title: String?
