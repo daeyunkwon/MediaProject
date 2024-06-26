@@ -40,6 +40,7 @@
 		4411F1532C19836400878AFE /* TrendTableViewCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4411F1522C19836400878AFE /* TrendTableViewCellDelegate.swift */; };
 		442BA51D2C2BFBA3005185B4 /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BA51C2C2BFBA3005185B4 /* TMDBAPI.swift */; };
 		442BA5212C2C0848005185B4 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BA5202C2C0848005185B4 /* UIViewController+Extension.swift */; };
+		442BA5242C2C1FC8005185B4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BA5232C2C1FC8005185B4 /* BaseViewController.swift */; };
 		443A3E152C2410A900C426FD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A3E142C2410A900C426FD /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		4411F1522C19836400878AFE /* TrendTableViewCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendTableViewCellDelegate.swift; sourceTree = "<group>"; };
 		442BA51C2C2BFBA3005185B4 /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
 		442BA5202C2C0848005185B4 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		442BA5232C2C1FC8005185B4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		443A3E142C2410A900C426FD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,6 +181,7 @@
 				442BA51F2C2C082F005185B4 /* Extension */,
 				442BA51E2C2BFBB1005185B4 /* Network */,
 				4411F1332C174C8100878AFE /* Protocol */,
+				442BA5222C2C1FB4005185B4 /* Base */,
 				4411F14B2C197CE300878AFE /* CustomView */,
 			);
 			path = Utils;
@@ -218,6 +221,14 @@
 				442BA5202C2C0848005185B4 /* UIViewController+Extension.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		442BA5222C2C1FB4005185B4 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				442BA5232C2C1FC8005185B4 /* BaseViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -329,6 +340,7 @@
 				4411F12E2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift in Sources */,
 				440027072C296C9E005D4F0B /* SimilarViewController.swift in Sources */,
 				4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */,
+				442BA5242C2C1FC8005185B4 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
