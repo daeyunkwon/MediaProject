@@ -21,6 +21,16 @@ final class TrendViewController: BaseViewController {
     
     //MARK: - Life Cycle
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "차트 순위"
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationItem.title = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -41,7 +51,6 @@ final class TrendViewController: BaseViewController {
     }
     
     override func setupNavi() {
-        navigationItem.title = ""
         navigationController?.navigationBar.tintColor = .label
         
         let list = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(listBarButtonTapped))
