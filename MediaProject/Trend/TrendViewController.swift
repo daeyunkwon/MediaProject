@@ -101,6 +101,7 @@ extension TrendViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.delegate = self
         cell.trend = self.trends[indexPath.row]
+        cell.configureLabel(num: indexPath.row + 1)
         return cell
     }
     

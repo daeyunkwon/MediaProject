@@ -18,7 +18,6 @@ final class TrendTableViewCell: UITableViewCell {
             guard let trend = self.trend else {return}
             
             releaseDateLabel.text = trend.releaseDate ?? trend.firstAirDate
-            typeLabel.text = "#" + (trend.type?.capitalized ?? "")
             let url = APIURL.makeImageURL(path: trend.posterPath ?? "")
             posterImageView.kf.setImage(with: url)
             averageValueLabel.text = trend.voteAverageString
@@ -235,12 +234,15 @@ final class TrendTableViewCell: UITableViewCell {
         contentView.backgroundColor = .systemBackground
         averageTitleLabel.text = "평점"
         detailLabel.text = "자세히 보기"
-        
     }
     
     //MARK: - Functions
     
     @objc func clipButtonTapped() {
         self.delegate?.clipButtonTapped(for: self)
+    }
+    
+    func configureLabel(num: Int) {
+        typeLabel.text = String(num) + "위 " + "#" + (trend?.type?.capitalized ?? "")
     }
 }
