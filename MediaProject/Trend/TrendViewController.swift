@@ -15,6 +15,8 @@ final class TrendViewController: BaseViewController {
     
     private var trends: [Trend] = []
     
+    private var currentFilterType: TMDBAPI.TrendType = .tv
+    
     private var itemsForMenu: [UIAction] {
         let filteredAll = UIAction(title: "전체") { [weak self] _ in
             self?.fetchData(type: .all)
@@ -53,10 +55,16 @@ final class TrendViewController: BaseViewController {
     }
     
     private func fetchData(type: TMDBAPI.TrendType) {
+        if self.currentFilterType == type {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+            return
+        }
+        
         NetworkManager.shared.fetchData(api: .trend(type: type), model: TrendData.self) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
+                self.currentFilterType = type
                 self.trends = data.results
                 self.tableView.reloadData()
                 self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
