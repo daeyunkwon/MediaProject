@@ -15,6 +15,22 @@ final class TrendViewController: BaseViewController {
     
     private var trends: [Trend] = []
     
+    private var itemsForMenu: [UIAction] {
+        let filteredAll = UIAction(title: "전체") { [weak self] _ in
+            self?.fetchData(type: .all)
+        }
+        
+        let filteredMovie = UIAction(title: "영화") { [weak self] _ in
+            self?.fetchData(type: .movie)
+        }
+        
+        let filteredTv = UIAction(title: "드라마") { [weak self] _ in
+            self?.fetchData(type: .tv)
+        }
+        
+        return [filteredAll, filteredMovie, filteredTv]
+    }
+    
     //MARK: - UI Components
     
     private let tableView = UITableView()
@@ -33,15 +49,17 @@ final class TrendViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        fetchData(type: .all)
     }
     
-    override func fetchData() {
-        NetworkManager.shared.fetchData(api: .trend, model: TrendData.self) { result in
+    private func fetchData(type: TMDBAPI.TrendType) {
+        NetworkManager.shared.fetchData(api: .trend(type: type), model: TrendData.self) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
                 self.trends = data.results
                 self.tableView.reloadData()
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
             
             case .failure(let error):
                 self.showNetworkFailAlert(message: error.errorMessageForAlert)
@@ -52,8 +70,9 @@ final class TrendViewController: BaseViewController {
     
     override func setupNavi() {
         navigationController?.navigationBar.tintColor = .label
-        
-        let list = UIBarButtonItem(image: UIImage(systemName: "list.triangle"), style: .plain, target: self, action: #selector(listBarButtonTapped))
+            
+        let menu = UIMenu(title: "카테고리", children: self.itemsForMenu)
+        let list = UIBarButtonItem(title: nil, image: UIImage(systemName: "list.dash"), primaryAction: nil, menu: menu)
         navigationItem.leftBarButtonItem = list
         
         let search = UIBarButtonItem(image: UIImage(systemName: "magnifyingglass"), style: .plain, target: self, action: #selector(searchBarButtonTapped))
@@ -81,10 +100,6 @@ final class TrendViewController: BaseViewController {
     }
     
     //MARK: - Functions
-    
-    @objc func listBarButtonTapped() {
-        print(#function)
-    }
     
     @objc func searchBarButtonTapped() {
         let vc = SearchViewController()

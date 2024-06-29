@@ -10,12 +10,18 @@ import Foundation
 import Alamofire
 
 enum TMDBAPI {
-    case trend
+    case trend(type: TrendType)
     case credits(id: Int, mediaType: MediaType)
     case search(query: String, page: Int)
     case similar(id: Int, mediaType: MediaType)
     case recommendation(id: Int, mediaType: MediaType)
     case poster(id: Int, mediaType: MediaType)
+    
+    enum TrendType {
+        case all
+        case movie
+        case tv
+    }
     
     var baseURL: String {
         return APIURL.baseURL
@@ -23,9 +29,18 @@ enum TMDBAPI {
     
     var endpoint: URL? {
         switch self {
-        case .trend:
-            guard let url = URL(string: baseURL + "trending/all/day") else {return nil}
-            return url
+        case .trend(let type):
+            switch type {
+            case .all:
+                guard let url = URL(string: baseURL + "trending/all/day") else {return nil}
+                return url
+            case .movie:
+                guard let url = URL(string: baseURL + "trending/movie/day") else {return nil}
+                return url
+            case .tv:
+                guard let url = URL(string: baseURL + "trending/tv/day") else {return nil}
+                return url
+            }
         
         case .credits(let id, let mediaType):
             switch mediaType {
