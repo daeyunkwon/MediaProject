@@ -45,8 +45,8 @@ class BaseViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "확인", style: .cancel))
     }
     
-    func pushVC(destination: UIViewController) {
-        self.navigationController?.pushViewController(destination, animated: true)
+    func pushVC(viewController: UIViewController) {
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func popVC() {

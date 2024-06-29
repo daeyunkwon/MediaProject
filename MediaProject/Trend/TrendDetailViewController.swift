@@ -24,6 +24,20 @@ final class TrendDetailViewController: BaseViewController {
     var backPosterImagePath: String?
     var overView: String?
     
+    enum SectionType: Int {
+        case overView
+        case cast
+        
+        var titleText: String {
+            switch self {
+            case .overView:
+                return "OverView"
+            case .cast:
+                return "Cast"
+            }
+        }
+    }
+    
     //MARK: - UI Components
     
     private let backImageView: UIImageView = {
@@ -147,7 +161,7 @@ final class TrendDetailViewController: BaseViewController {
         vc.mediaTitle = self.titleText
         vc.mediaType = self.mediaType
         vc.id = self.id
-        pushVC(destination: vc)
+        pushVC(viewController: vc)
     }
 }
 
@@ -156,10 +170,10 @@ final class TrendDetailViewController: BaseViewController {
 extension TrendDetailViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
-        case 0:
-            return "OverView"
-        case 1:
-            return "Cast"
+        case SectionType.overView.rawValue:
+            return SectionType.overView.titleText
+        case SectionType.cast.rawValue:
+            return SectionType.cast.titleText
         default:
             return ""
         }
@@ -167,9 +181,9 @@ extension TrendDetailViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
-        case 0:
+        case SectionType.overView.rawValue:
             return UITableView.automaticDimension
-        case 1:
+        case SectionType.cast.rawValue:
             return 100
         default:
             return 0
@@ -182,9 +196,9 @@ extension TrendDetailViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
-        case 0:
+        case SectionType.overView.rawValue:
             return 1
-        case 1:
+        case SectionType.cast.rawValue:
             return self.credits.count
         default:
             return 0
@@ -192,19 +206,31 @@ extension TrendDetailViewController: UITableViewDataSource, UITableViewDelegate 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TrendDetailOverViewTableViewCell.identifier, for: indexPath) as! TrendDetailOverViewTableViewCell
+        
+        switch indexPath.section {
+        case SectionType.overView.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendDetailOverViewTableViewCell.identifier, for: indexPath) as? TrendDetailOverViewTableViewCell else {
+                print("Failed to dequeue a TrendDetailOverViewTableViewCell. Using default UITableViewCell.")
+                return UITableViewCell()
+            }
             cell.overView = self.overView
             cell.delegate = self
             cell.selectionStyle = .none
             return cell
-        } else if indexPath.section == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: TrendDetailCastTableViewCell.identifier, for: indexPath) as! TrendDetailCastTableViewCell
+            
+        case SectionType.cast.rawValue:
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendDetailCastTableViewCell.identifier, for: indexPath) as? TrendDetailCastTableViewCell else {
+                print("Failed to dequeue a TrendDetailCastTableViewCell. Using default UITableViewCell.")
+                return UITableViewCell()
+            }
             cell.credit = self.credits[indexPath.row]
             cell.selectionStyle = .none
             return cell
+        
+        default:
+            print("Failed to dequeue a CustomCell. Using default UITableViewCell.")
+            return UITableViewCell()
         }
-        return UITableViewCell()
     }
 }
 

@@ -20,10 +20,10 @@ final class NetworkManager {
             return
         }
         
-        AF.request(safeURL, method: api.method, parameters: api.parameter, encoding: api.encoding, headers: api.header).responseDecodable(of: T.self) { response in
+        AF.request(safeURL, method: api.method, parameters: api.parameter, encoding: api.encoding, headers: api.header).validate(statusCode: 200...299).responseDecodable(of: T.self) { response in
             switch response.result {
             case .success(let data):
-                completion(data as T, nil)
+                completion(data, nil)
             case .failure(let error):
                 print(response.response?.statusCode ?? 0)
                 print(error)
