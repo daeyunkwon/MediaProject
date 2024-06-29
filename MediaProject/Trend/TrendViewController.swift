@@ -95,7 +95,10 @@ extension TrendViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier, for: indexPath) as! TrendTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: TrendTableViewCell.identifier, for: indexPath) as? TrendTableViewCell else {
+            print("Failed to dequeue a TrendTableViewCell. Using default UITableViewCell.")
+            return UITableViewCell()
+        }
         cell.delegate = self
         cell.trend = self.trends[indexPath.row]
         return cell

@@ -102,7 +102,10 @@ extension SimilarCollectionTableViewCell: UICollectionViewDataSource, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarCollectionViewCell.identifier, for: indexPath) as! SimilarCollectionViewCell
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SimilarCollectionViewCell.identifier, for: indexPath) as? SimilarCollectionViewCell else {
+            print("Failed to dequeue a SimilarCollectionViewCell. Using default UICollectionViewCell.")
+            return UICollectionViewCell()
+        }
         
         switch cellType {
         case .similarity:

@@ -161,7 +161,10 @@ extension SimilarViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SimilarCollectionTableViewCell.identifier, for: indexPath) as! SimilarCollectionTableViewCell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SimilarCollectionTableViewCell.identifier, for: indexPath) as? SimilarCollectionTableViewCell else {
+            print("Failed to dequeue a SimilarCollectionTableViewCell. Using default UITableViewCell.")
+            return UITableViewCell()
+        }
         
         switch indexPath.section {
         case CellType.similarity.rawValue:

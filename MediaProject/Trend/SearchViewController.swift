@@ -94,6 +94,7 @@ final class SearchViewController: BaseViewController {
 //MARK: - UISearchBarDelegate
 
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard var text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {return}
         text = text.trimmingCharacters(in: .whitespaces)
@@ -139,6 +140,7 @@ extension SearchViewController: UISearchBarDelegate {
 //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
 extension SearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.searchResults.count
     }
@@ -153,6 +155,7 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
 //MARK: - UICollectionViewDataSourcePrefetching
 
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
+    
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         for item in indexPaths {
             if item.row == self.searchResults.count - 3 && self.page < self.totalPage  {
