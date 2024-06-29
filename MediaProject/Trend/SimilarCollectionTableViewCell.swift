@@ -15,7 +15,7 @@ final class SimilarCollectionTableViewCell: UITableViewCell {
     
     var collectionCellWidthDivider: CGFloat = 0
     
-    enum CellType {
+    enum CellType: Int {
         case similarity
         case recommendation
         case poster
@@ -49,13 +49,12 @@ final class SimilarCollectionTableViewCell: UITableViewCell {
         return label
     }()
     
-    private lazy var collectionView: UICollectionView = {
+    lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.sectionInset = .init(top: 10, left: 10, bottom: 10, right: 10)
         
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(SimilarCollectionViewCell.self, forCellWithReuseIdentifier: SimilarCollectionViewCell.identifier)
         collectionView.showsHorizontalScrollIndicator = false
@@ -91,7 +90,7 @@ final class SimilarCollectionTableViewCell: UITableViewCell {
 
 //MARK: - UICollectionViewDataSource, UICollectionViewDelegate
 
-extension SimilarCollectionTableViewCell: UICollectionViewDataSource, UICollectionViewDelegate {
+extension SimilarCollectionTableViewCell: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch cellType {
@@ -117,25 +116,5 @@ extension SimilarCollectionTableViewCell: UICollectionViewDataSource, UICollecti
         }
         
         return cell
-    }
-}
-
-//MARK: - UICollectionViewDelegateFlowLayout
-
-extension SimilarCollectionTableViewCell: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let margin: CGFloat = 20
-        
-        var size: CGFloat = 0.0
-        switch cellType {
-        case .similarity: size = 3.4
-        case .recommendation: size = 3.4
-        case .poster: size = 2.2
-        }
-        let width: CGFloat = (collectionView.bounds.width - margin) / size
-        let height: CGFloat = (collectionView.bounds.height - margin)
-        
-        return CGSize(width: width, height: height )
     }
 }

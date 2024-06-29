@@ -41,6 +41,7 @@
 		442BA51D2C2BFBA3005185B4 /* TMDBAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BA51C2C2BFBA3005185B4 /* TMDBAPI.swift */; };
 		442BA5242C2C1FC8005185B4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BA5232C2C1FC8005185B4 /* BaseViewController.swift */; };
 		443A3E152C2410A900C426FD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A3E142C2410A900C426FD /* NetworkManager.swift */; };
+		44E178F22C3069D8003901CC /* PosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178F12C3069D8003901CC /* PosterDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +78,7 @@
 		442BA51C2C2BFBA3005185B4 /* TMDBAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBAPI.swift; sourceTree = "<group>"; };
 		442BA5232C2C1FC8005185B4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		443A3E142C2410A900C426FD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		44E178F12C3069D8003901CC /* PosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 				440027062C296C9E005D4F0B /* SimilarViewController.swift */,
 				440027082C297769005D4F0B /* SimilarCollectionTableViewCell.swift */,
 				4400270A2C297A42005D4F0B /* SimilarCollectionViewCell.swift */,
+				44E178F12C3069D8003901CC /* PosterDetailViewController.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				4400270D2C29AF9D005D4F0B /* SimilarResult.swift in Sources */,
 				4411F1282C16ECF800878AFE /* Reuseable.swift in Sources */,
 				4411F1532C19836400878AFE /* TrendTableViewCellDelegate.swift in Sources */,
+				44E178F22C3069D8003901CC /* PosterDetailViewController.swift in Sources */,
 				4411F13D2C183E6700878AFE /* SearchViewController.swift in Sources */,
 				442BA51D2C2BFBA3005185B4 /* TMDBAPI.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,

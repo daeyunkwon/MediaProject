@@ -136,6 +136,20 @@ final class SimilarViewController: BaseViewController {
         super.configureUI()
         mediaTitleLabel.text = mediaTitle
     }
+    
+    //MARK: - Functions
+    
+    func presentTrendDetailVC(id: Int, titleText: String?, posterImagePath: String?, backPosterImagePath: String?, overView: String?) {
+        let vc = TrendDetailViewController()
+        vc.id = id
+        vc.mediaType = self.mediaType
+        vc.titleText = titleText
+        vc.posterImagePath = posterImagePath
+        vc.backPosterImagePath = backPosterImagePath
+        vc.overView = overView
+        vc.modalPresentationStyle = .automatic
+        present(vc, animated: true)
+    }
 }
 
 //MARK: - UITableViewDataSource, UITableViewDelegate
@@ -171,21 +185,84 @@ extension SimilarViewController: UITableViewDataSource, UITableViewDelegate {
             cell.cellType = .similarity
             cell.headerTextLabel.text = CellType.allCases[indexPath.section].title
             cell.similarList = self.similarList
+            cell.collectionView.tag = indexPath.section
             
         case CellType.recommendation.rawValue:
             cell.cellType = .recommendation
             cell.headerTextLabel.text = CellType.allCases[indexPath.section].title
             cell.recommendationList = self.recommendationList
+            cell.collectionView.tag = indexPath.section
             
         case CellType.poster.rawValue:
             cell.cellType = .poster
             cell.headerTextLabel.text = CellType.allCases[indexPath.section].title
             cell.posterList = self.posterList
+            cell.collectionView.tag = indexPath.section
         default:
             break
         }
         
+        cell.collectionView.delegate = self
+        
         cell.selectionStyle = .none
         return cell
+    }
+}
+
+//MARK: - UICollectionViewDelegate
+
+extension SimilarViewController: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        switch collectionView.tag {
+        case CellType.similarity.rawValue:
+            self.presentTrendDetailVC(
+                id: similarList[indexPath.row].id,
+                titleText: similarList[indexPath.row].name ?? similarList[indexPath.row].title,
+                posterImagePath: similarList[indexPath.row].posterPath,
+                backPosterImagePath: similarList[indexPath.row].backdropPath,
+                overView: similarList[indexPath.row].overview
+            )
+        
+        case CellType.recommendation.rawValue:
+            self.presentTrendDetailVC(
+                id: recommendationList[indexPath.row].id,
+                titleText: recommendationList[indexPath.row].name ?? recommendationList[indexPath.row].title,
+                posterImagePath: recommendationList[indexPath.row].posterPath,
+                backPosterImagePath: recommendationList[indexPath.row].backdropPath,
+                overView: recommendationList[indexPath.row].overview
+            )
+            
+        case CellType.poster.rawValue:
+            let vc = PosterDetailViewController()
+            vc.poster = posterList[indexPath.row]
+            present(vc, animated: true)
+        default:
+            break
+        }
+    }
+}
+
+//MARK: - UICollectionViewDelegateFlowLayout
+
+extension SimilarViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let margin: CGFloat = 20
+        
+        var size: CGFloat = 0.0
+        switch collectionView.tag {
+        case CellType.similarity.rawValue: size = 3.4
+        case CellType.recommendation.rawValue: size = 3.4
+        case CellType.poster.rawValue: size = 2.2
+        default:
+            break
+        }
+        let width: CGFloat = (collectionView.bounds.width - margin) / size
+        let height: CGFloat = (collectionView.bounds.height - margin)
+        
+        return CGSize(width: width, height: height )
     }
 }

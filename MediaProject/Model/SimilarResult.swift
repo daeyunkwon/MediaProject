@@ -15,9 +15,17 @@ struct Similar: Decodable {
 struct SimilarResult: Decodable {
     let id: Int
     let posterPath: String?
+    let overview: String?
+    let name: String?
+    let title: String?
+    let backdropPath: String?
     
     enum CodingKeys: String, CodingKey {
         case id
         case posterPath = "poster_path"
+        case overview
+        case name
+        case backdropPath = "backdrop_path"
+        case title
     }
 }
