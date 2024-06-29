@@ -99,31 +99,28 @@ extension SearchViewController: UISearchBarDelegate {
         guard var text = searchBar.text, !text.trimmingCharacters(in: .whitespaces).isEmpty else {return}
         text = text.trimmingCharacters(in: .whitespaces)
         
-        if text == self.searchText {
-            view.endEditing(true)
-            return
-        } else {
+        if text != self.searchText {
             self.searchText = text
             searchResults = []
             self.page = 1
-            
-            NetworkManager.shared.fetchData(api: .search(query: text, page: self.page)) { (data: Search?, error) in
-                if error != nil {
-                    self.showNetworkFailAlert(message: error ?? "")
-                    return
-                }
-                
-                if let safeData = data {
-                    self.totalPage = safeData.totalPages
-                    self.searchResults.append(contentsOf: safeData.results)
+            NetworkManager.shared.fetchData(api: .search(query: text, page: self.page), model: Search.self) { result in
+                switch result {
+                case .success(let data):
+                    self.totalPage = data.totalPages
+                    self.searchResults.append(contentsOf: data.results)
                     self.collectionView.reloadData()
                     if self.page == 1 && self.searchResults.count >= 1 {
                         self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
                     }
+                    
+                case .failure(let error):
+                    self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                    print(error)
                 }
             }
-            view.endEditing(true)
         }
+        
+        view.endEditing(true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -160,20 +157,19 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
         for item in indexPaths {
             if item.row == self.searchResults.count - 3 && self.page < self.totalPage  {
                 self.page += 1
-                
-                NetworkManager.shared.fetchData(api: .search(query: self.searchText, page: self.page)) { (data: Search?, error) in
-                    if error != nil {
-                        self.showNetworkFailAlert(message: error ?? "")
-                        return
-                    }
-                    
-                    if let safeData = data {
-                        self.totalPage = safeData.totalPages
-                        self.searchResults.append(contentsOf: safeData.results)
+                NetworkManager.shared.fetchData(api: .search(query: self.searchText, page: self.page), model: Search.self) { result in
+                    switch result {
+                    case .success(let data):
+                        self.totalPage = data.totalPages
+                        self.searchResults.append(contentsOf: data.results)
                         self.collectionView.reloadData()
                         if self.page == 1 && self.searchResults.count >= 1 {
                             self.collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: false)
                         }
+                        
+                    case .failure(let error):
+                        print(error)
+                        self.showNetworkFailAlert(message: error.errorMessageForAlert)
                     }
                 }
             }

@@ -27,15 +27,15 @@ final class TrendViewController: BaseViewController {
     }
     
     override func fetchData() {
-        NetworkManager.shared.fetchData(api: .trend) { (data: TrendData?, error) in
-            if error != nil {
-                self.showNetworkFailAlert(message: error ?? "")
-                return
-            }
-            
-            if let safeData = data?.results {
-                self.trends = safeData
+        NetworkManager.shared.fetchData(api: .trend, model: TrendData.self) { result in
+            switch result {
+            case .success(let data):
+                self.trends = data.results
                 self.tableView.reloadData()
+            
+            case .failure(let error):
+                self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                print(error)
             }
         }
     }

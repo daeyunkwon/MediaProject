@@ -82,15 +82,15 @@ final class TrendDetailViewController: BaseViewController {
     }
     
     override func fetchData() {
-        NetworkManager.shared.fetchData(api: .credits(id: self.id, mediaType: self.mediaType)) { (data: Credits?, error) in
-            if error != nil {
-                self.showNetworkFailAlert(message: error ?? "")
-                return
-            }
-            
-            if let safeData = data?.cast {
-                self.credits = safeData
+        NetworkManager.shared.fetchData(api: .credits(id: self.id, mediaType: self.mediaType), model: Credits.self) { result in
+            switch result {
+            case .success(let data):
+                self.credits = data.cast
                 self.tableView.reloadData()
+            
+            case .failure(let error):
+                self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                print(error)
             }
         }
     }

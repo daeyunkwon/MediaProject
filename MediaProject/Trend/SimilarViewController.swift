@@ -60,15 +60,15 @@ final class SimilarViewController: BaseViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.fetchData(api: .similar(id: self.id, mediaType: self.mediaType)) { (data: Similar?, error) in
-                if error != nil {
-                    self.showNetworkFailAlert(message: error ?? "")
+            NetworkManager.shared.fetchData(api: .similar(id: self.id, mediaType: self.mediaType), model: Similar.self) { result in
+                switch result {
+                case .success(let data):
+                    self.similarList = data.results
                     group.leave()
-                    return
-                }
                 
-                if let safeData = data {
-                    self.similarList = safeData.results
+                case .failure(let error):
+                    self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                    print(error)
                     group.leave()
                 }
             }
@@ -76,15 +76,15 @@ final class SimilarViewController: BaseViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.fetchData(api: .recommendation(id: self.id, mediaType: self.mediaType)) { (data: Recommendation?, error) in
-                if error != nil {
-                    self.showNetworkFailAlert(message: error ?? "")
+            NetworkManager.shared.fetchData(api: .recommendation(id: self.id, mediaType: self.mediaType), model: Recommendation.self) { result in
+                switch result {
+                case .success(let data):
+                    self.recommendationList = data.results
                     group.leave()
-                    return
-                }
                 
-                if let safeData = data {
-                    self.recommendationList = safeData.results
+                case .failure(let error):
+                    self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                    print(error)
                     group.leave()
                 }
             }
@@ -92,15 +92,15 @@ final class SimilarViewController: BaseViewController {
         
         group.enter()
         DispatchQueue.global().async(group: group) {
-            NetworkManager.shared.fetchData(api: .poster(id: self.id, mediaType: self.mediaType)) { (data: Poster?, error) in
-                if error != nil {
-                    self.showNetworkFailAlert(message: error ?? "")
+            NetworkManager.shared.fetchData(api: .poster(id: self.id, mediaType: self.mediaType), model: Poster.self) { result in
+                switch result {
+                case .success(let data):
+                    self.posterList = data.backdrops
                     group.leave()
-                    return
-                }
                 
-                if let safeData = data {
-                    self.posterList = safeData.backdrops
+                case .failure(let error):
+                    self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                    print(error)
                     group.leave()
                 }
             }
