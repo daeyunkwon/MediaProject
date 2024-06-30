@@ -50,7 +50,9 @@ enum TMDBAPI {
             case .tv:
                 guard let url = URL(string: baseURL + APIURL.creditsTVURL(id: String(id))) else {return nil}
                 return url
+            default: break
             }
+        
         
         case .search:
             guard let url = URL(string: baseURL + APIURL.searchURL) else {return nil}
@@ -64,6 +66,7 @@ enum TMDBAPI {
             case .tv:
                 guard let url = URL(string: baseURL + APIURL.similarTVURL(id: String(id))) else {return nil}
                 return url
+            default: break
             }
             
         case .recommendation(let id, let mediaType):
@@ -74,6 +77,7 @@ enum TMDBAPI {
             case .tv:
                 guard let url = URL(string: baseURL + APIURL.recommendationsTVURL(id: String(id))) else {return nil}
                 return url
+            default: break
             }
             
         case .poster(let id, let mediaType):
@@ -84,8 +88,10 @@ enum TMDBAPI {
             case .tv:
                 guard let url = URL(string: baseURL + APIURL.posterTVURL(id: String(id))) else {return nil}
                 return url
+            default: break
             }
         }
+        return nil
     }
     
     var method: HTTPMethod {

@@ -143,6 +143,33 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.searchResult = self.searchResults[indexPath.item]
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let type = searchResults[indexPath.item].mediaType
+        let mediaType = MediaType.allCases.filter {
+            if $0.rawValue == type {
+                return true
+            }
+            return false
+        }
+        
+        switch mediaType.first ?? .movie {
+        case MediaType.movie, MediaType.tv:
+            self.presentTrendDetailVC(
+                id: searchResults[indexPath.item].id,
+                mediaType: mediaType.first ?? .movie,
+                titleText: searchResults[indexPath.item].name ?? searchResults[indexPath.item].title,
+                posterImagePath: searchResults[indexPath.item].posterPath,
+                backPosterImagePath: searchResults[indexPath.item].backdropPath,
+                overView: searchResults[indexPath.item].overview,
+                modalStyle: .fullScreen
+            )
+            
+        case MediaType.person:
+            print("MediaType is Person")
+            break
+        }
+    }
 }
 
 //MARK: - UICollectionViewDataSourcePrefetching

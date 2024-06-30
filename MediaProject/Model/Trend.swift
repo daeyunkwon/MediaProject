@@ -7,9 +7,10 @@
 
 import Foundation
 
-enum MediaType {
+enum MediaType: String, CaseIterable {
     case movie
     case tv
+    case person
 }
 
 struct TrendData: Decodable {
@@ -34,6 +35,8 @@ struct Trend: Decodable {
             return .tv
         case "movie":
             return .movie
+        case "person":
+            return .person
         default:
             return .movie
         }

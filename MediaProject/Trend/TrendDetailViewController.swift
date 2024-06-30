@@ -38,6 +38,12 @@ final class TrendDetailViewController: BaseViewController {
         }
     }
     
+    enum ViewType {
+        case fullover
+        case modal
+    }
+    var viewType: ViewType = .modal
+    
     //MARK: - UI Components
     
     private let backImageView: UIImageView = {
@@ -103,6 +109,11 @@ final class TrendDetailViewController: BaseViewController {
         button.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
         let rightButton = UIBarButtonItem(customView: button)
         navigationItem.rightBarButtonItem = rightButton
+        
+        if viewType == .fullover {
+            let leftButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(leftBarButtonTapped))
+            navigationItem.leftBarButtonItem = leftButton
+        }
     }
     
     override func setupTableView() {
@@ -115,7 +126,7 @@ final class TrendDetailViewController: BaseViewController {
     override func configureLayout() {
         view.addSubview(backImageView)
         backImageView.snp.makeConstraints { make in
-            make.top.equalTo(view.safeAreaLayoutGuide).offset(10)
+            make.top.equalTo(view.safeAreaLayoutGuide)
             make.leading.trailing.equalToSuperview()
             make.height.equalTo(200)
         }
@@ -156,12 +167,16 @@ final class TrendDetailViewController: BaseViewController {
     
     //MARK: - Functions
     
-    @objc func rightBarButtonTapped() {
+    @objc private func rightBarButtonTapped() {
         let vc = SimilarViewController()
         vc.mediaTitle = self.titleText
         vc.mediaType = self.mediaType
         vc.id = self.id
         pushVC(viewController: vc)
+    }
+    
+    @objc private func leftBarButtonTapped() {
+        dismiss(animated: true)
     }
 }
 

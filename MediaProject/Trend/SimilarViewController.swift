@@ -136,20 +136,6 @@ final class SimilarViewController: BaseViewController {
         super.configureUI()
         mediaTitleLabel.text = mediaTitle
     }
-    
-    //MARK: - Functions
-    
-    func presentTrendDetailVC(id: Int, titleText: String?, posterImagePath: String?, backPosterImagePath: String?, overView: String?) {
-        let vc = TrendDetailViewController()
-        vc.id = id
-        vc.mediaType = self.mediaType
-        vc.titleText = titleText
-        vc.posterImagePath = posterImagePath
-        vc.backPosterImagePath = backPosterImagePath
-        vc.overView = overView
-        vc.modalPresentationStyle = .automatic
-        present(vc, animated: true)
-    }
 }
 
 //MARK: - UITableViewDataSource, UITableViewDelegate
@@ -218,20 +204,24 @@ extension SimilarViewController: UICollectionViewDelegate {
         switch collectionView.tag {
         case CellType.similarity.rawValue:
             self.presentTrendDetailVC(
-                id: similarList[indexPath.row].id,
+                id: similarList[indexPath.row].id, 
+                mediaType: self.mediaType,
                 titleText: similarList[indexPath.row].name ?? similarList[indexPath.row].title,
                 posterImagePath: similarList[indexPath.row].posterPath,
                 backPosterImagePath: similarList[indexPath.row].backdropPath,
-                overView: similarList[indexPath.row].overview
+                overView: similarList[indexPath.row].overview,
+                modalStyle: .automatic
             )
         
         case CellType.recommendation.rawValue:
             self.presentTrendDetailVC(
-                id: recommendationList[indexPath.row].id,
+                id: recommendationList[indexPath.row].id, 
+                mediaType: self.mediaType,
                 titleText: recommendationList[indexPath.row].name ?? recommendationList[indexPath.row].title,
                 posterImagePath: recommendationList[indexPath.row].posterPath,
                 backPosterImagePath: recommendationList[indexPath.row].backdropPath,
-                overView: recommendationList[indexPath.row].overview
+                overView: recommendationList[indexPath.row].overview,
+                modalStyle: .automatic
             )
             
         case CellType.poster.rawValue:
