@@ -42,6 +42,11 @@
 		442BA5242C2C1FC8005185B4 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442BA5232C2C1FC8005185B4 /* BaseViewController.swift */; };
 		443A3E152C2410A900C426FD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443A3E142C2410A900C426FD /* NetworkManager.swift */; };
 		44E178F22C3069D8003901CC /* PosterDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178F12C3069D8003901CC /* PosterDetailViewController.swift */; };
+		44E178F42C311B66003901CC /* PersonDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178F32C311B66003901CC /* PersonDetailViewController.swift */; };
+		44E178F82C313236003901CC /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178F72C313236003901CC /* Profile.swift */; };
+		44E178FA2C313EC7003901CC /* CombinedCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178F92C313EC7003901CC /* CombinedCredits.swift */; };
+		44E178FE2C3144DE003901CC /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178FD2C3144DE003901CC /* PersonCollectionViewCell.swift */; };
+		44E179002C3169CE003901CC /* PersonHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178FF2C3169CE003901CC /* PersonHeaderCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +84,11 @@
 		442BA5232C2C1FC8005185B4 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		443A3E142C2410A900C426FD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		44E178F12C3069D8003901CC /* PosterDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterDetailViewController.swift; sourceTree = "<group>"; };
+		44E178F32C311B66003901CC /* PersonDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailViewController.swift; sourceTree = "<group>"; };
+		44E178F72C313236003901CC /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		44E178F92C313EC7003901CC /* CombinedCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedCredits.swift; sourceTree = "<group>"; };
+		44E178FD2C3144DE003901CC /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
+		44E178FF2C3169CE003901CC /* PersonHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +143,8 @@
 				4400270C2C29AF9D005D4F0B /* SimilarResult.swift */,
 				4400270E2C29BDAC005D4F0B /* Recommendation.swift */,
 				440027122C29C864005D4F0B /* Poster.swift */,
+				44E178F72C313236003901CC /* Profile.swift */,
+				44E178F92C313EC7003901CC /* CombinedCredits.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -151,6 +163,9 @@
 				440027082C297769005D4F0B /* SimilarCollectionTableViewCell.swift */,
 				4400270A2C297A42005D4F0B /* SimilarCollectionViewCell.swift */,
 				44E178F12C3069D8003901CC /* PosterDetailViewController.swift */,
+				44E178F32C311B66003901CC /* PersonDetailViewController.swift */,
+				44E178FD2C3144DE003901CC /* PersonCollectionViewCell.swift */,
+				44E178FF2C3169CE003901CC /* PersonHeaderCollectionViewCell.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -312,6 +327,7 @@
 				4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */,
 				440027132C29C864005D4F0B /* Poster.swift in Sources */,
 				4411F1162C16D96800878AFE /* Trend.swift in Sources */,
+				44E178F42C311B66003901CC /* PersonDetailViewController.swift in Sources */,
 				4411F1302C1735BF00878AFE /* Credits.swift in Sources */,
 				4411F1322C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift in Sources */,
 				4400270D2C29AF9D005D4F0B /* SimilarResult.swift in Sources */,
@@ -322,16 +338,20 @@
 				442BA51D2C2BFBA3005185B4 /* TMDBAPI.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
 				4400270B2C297A42005D4F0B /* SimilarCollectionViewCell.swift in Sources */,
+				44E178FE2C3144DE003901CC /* PersonCollectionViewCell.swift in Sources */,
 				4400270F2C29BDAC005D4F0B /* Recommendation.swift in Sources */,
 				443A3E152C2410A900C426FD /* NetworkManager.swift in Sources */,
 				4411F1512C1980CD00878AFE /* Constant.swift in Sources */,
+				44E178FA2C313EC7003901CC /* CombinedCredits.swift in Sources */,
 				4411F1002C16D02C00878AFE /* SceneDelegate.swift in Sources */,
 				4411F1262C16EC8F00878AFE /* TrendTableViewCell.swift in Sources */,
 				4411F1412C186BCC00878AFE /* Search.swift in Sources */,
+				44E178F82C313236003901CC /* Profile.swift in Sources */,
 				4411F13F2C18413800878AFE /* SearchCollectionViewCell.swift in Sources */,
 				4411F12E2C172C4A00878AFE /* TrendDetailCastTableViewCell.swift in Sources */,
 				440027072C296C9E005D4F0B /* SimilarViewController.swift in Sources */,
 				4411F14D2C197D2800878AFE /* ShadowRadiusBackView.swift in Sources */,
+				44E179002C3169CE003901CC /* PersonHeaderCollectionViewCell.swift in Sources */,
 				442BA5242C2C1FC8005185B4 /* BaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

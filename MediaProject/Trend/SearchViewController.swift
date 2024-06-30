@@ -166,8 +166,11 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
             )
             
         case MediaType.person:
-            print("MediaType is Person")
-            break
+            let vc = PersonDetailViewController()
+            vc.id = searchResults[indexPath.item].id
+            let navi = UINavigationController(rootViewController: vc)
+            navi.modalPresentationStyle = .fullScreen
+            present(navi, animated: true)
         }
     }
 }

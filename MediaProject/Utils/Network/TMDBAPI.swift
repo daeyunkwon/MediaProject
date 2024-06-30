@@ -16,6 +16,8 @@ enum TMDBAPI {
     case similar(id: Int, mediaType: MediaType)
     case recommendation(id: Int, mediaType: MediaType)
     case poster(id: Int, mediaType: MediaType)
+    case profile(id: Int)
+    case combinedCredits(id: Int)
     
     enum TrendType {
         case all
@@ -90,7 +92,16 @@ enum TMDBAPI {
                 return url
             default: break
             }
+        
+        case .profile(let id):
+            guard let url = URL(string: baseURL + APIURL.profileURL(id: String(id))) else {return nil}
+            return url
+        
+        case .combinedCredits(let id):
+            guard let url = URL(string: baseURL + APIURL.combinedCreditsURL(id: String(id))) else {return nil}
+            return url
         }
+        
         return nil
     }
     
@@ -100,7 +111,7 @@ enum TMDBAPI {
     
     var parameter: Parameters {
         switch self {
-        case .trend, .credits, .similar, .recommendation:
+        case .trend, .credits, .similar, .recommendation, .profile, .combinedCredits:
             return ["language": "ko-KR"]
             
         case .search(let query, let page):
