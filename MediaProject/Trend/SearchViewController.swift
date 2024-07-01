@@ -162,7 +162,8 @@ extension SearchViewController: UICollectionViewDataSource, UICollectionViewDele
                 posterImagePath: searchResults[indexPath.item].posterPath,
                 backPosterImagePath: searchResults[indexPath.item].backdropPath,
                 overView: searchResults[indexPath.item].overview,
-                modalStyle: .fullScreen
+                modalStyle: .fullScreen,
+                isShowSimilarButton: true
             )
             
         case MediaType.person:

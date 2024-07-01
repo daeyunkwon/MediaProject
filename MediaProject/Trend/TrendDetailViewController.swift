@@ -44,6 +44,8 @@ final class TrendDetailViewController: BaseViewController {
     }
     var viewType: ViewType = .modal
     
+    var isShowSimilarButton: Bool = true
+    
     //MARK: - UI Components
     
     private let backImageView: UIImageView = {
@@ -113,13 +115,15 @@ final class TrendDetailViewController: BaseViewController {
     }
     
     override func setupNavi() {
-        let button = UIButton(type: .system)
-        button.setTitle("비슷한 콘텐츠", for: .normal)
-        button.setImage(UIImage(systemName: "plus.magnifyingglass")?.applyingSymbolConfiguration(.init(font: UIFont.systemFont(ofSize: 13), scale: .large)), for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 13)
-        button.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
-        let rightButton = UIBarButtonItem(customView: button)
-        navigationItem.rightBarButtonItem = rightButton
+        if isShowSimilarButton {
+            let button = UIButton(type: .system)
+            button.setTitle("비슷한 콘텐츠", for: .normal)
+            button.setImage(UIImage(systemName: "plus.magnifyingglass")?.applyingSymbolConfiguration(.init(font: UIFont.systemFont(ofSize: 13), scale: .large)), for: .normal)
+            button.titleLabel?.font = .systemFont(ofSize: 13)
+            button.addTarget(self, action: #selector(rightBarButtonTapped), for: .touchUpInside)
+            let rightButton = UIBarButtonItem(customView: button)
+            navigationItem.rightBarButtonItem = rightButton
+        }
         
         if viewType == .fullover {
             let leftButton = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .plain, target: self, action: #selector(leftBarButtonTapped))

@@ -53,7 +53,7 @@ class BaseViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
-    func presentTrendDetailVC(id: Int, mediaType: MediaType , titleText: String?, posterImagePath: String?, backPosterImagePath: String?, overView: String?, modalStyle: UIModalPresentationStyle) {
+    func presentTrendDetailVC(id: Int, mediaType: MediaType , titleText: String?, posterImagePath: String?, backPosterImagePath: String?, overView: String?, modalStyle: UIModalPresentationStyle, isShowSimilarButton: Bool) {
         let vc = TrendDetailViewController()
         vc.id = id
         vc.mediaType = mediaType
@@ -62,6 +62,7 @@ class BaseViewController: UIViewController {
         vc.backPosterImagePath = backPosterImagePath
         vc.overView = overView
         vc.modalPresentationStyle = modalStyle
+        vc.isShowSimilarButton = isShowSimilarButton
         if modalStyle == .fullScreen {
             vc.viewType = .fullover
             let navi = UINavigationController(rootViewController: vc)

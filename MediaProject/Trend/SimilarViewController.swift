@@ -209,7 +209,8 @@ extension SimilarViewController: UICollectionViewDelegate {
                 posterImagePath: similarList[indexPath.row].posterPath,
                 backPosterImagePath: similarList[indexPath.row].backdropPath,
                 overView: similarList[indexPath.row].overview,
-                modalStyle: .automatic
+                modalStyle: .fullScreen, 
+                isShowSimilarButton: false
             )
         
         case CellType.recommendation.rawValue:
@@ -220,7 +221,8 @@ extension SimilarViewController: UICollectionViewDelegate {
                 posterImagePath: recommendationList[indexPath.row].posterPath,
                 backPosterImagePath: recommendationList[indexPath.row].backdropPath,
                 overView: recommendationList[indexPath.row].overview,
-                modalStyle: .automatic
+                modalStyle: .fullScreen,
+                isShowSimilarButton: false
             )
             
         case CellType.poster.rawValue:
