@@ -15,19 +15,32 @@ final class TrailerViewController: BaseViewController {
     //MARK: - Properties
     
     var id: Int = 0
-    
     var mediaType: MediaType = .movie
-    
     
     //MARK: - UI Components
     
     private let webView = WKWebView()
     
-    
     //MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func fetchData() {
+        NetworkManager.shared.fetchData(api: .video(id: self.id, mediaType: self.mediaType), model: VideoData.self) { result in
+            switch result {
+            case .success(let data):
+                print(data.results.first?.key ?? "")
+                guard let url = APIURL.makeYoutubeURL(key: data.results.first?.key ?? "") else { return }
+                let request = URLRequest(url: url)
+                print(request)
+                self.webView.load(request)
+            case .failure(let error):
+                self.showNetworkFailAlert(message: error.errorMessageForAlert)
+                print(error)
+            }
+        }
     }
     
     override func configureLayout() {
@@ -39,11 +52,5 @@ final class TrailerViewController: BaseViewController {
     
     override func configureUI() {
         super.configureUI()
-        //webView.load(URLRequest(url: url))
     }
-    
-    
-    //MARK: - Functions
-    
-
 }
