@@ -55,25 +55,27 @@ final class TrendViewController: BaseViewController {
     }
     
     private func fetchData(type: TMDBAPI.TrendType) {
-        if self.currentFilterType == type {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            return
-        }
+//        if self.currentFilterType == type {
+//            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            return
+//        }
+//        
+//        NetworkManager.shared.fetchData(api: .trend(type: type), model: TrendData.self) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let data):
+//                self.currentFilterType = type
+//                self.trends = data.results
+//                self.tableView.reloadData()
+//                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+//            
+//            case .failure(let error):
+//                self.showNetworkFailAlert(message: error.errorMessageForAlert)
+//                print(error)
+//            }
+//        }
         
-        NetworkManager.shared.fetchData(api: .trend(type: type), model: TrendData.self) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let data):
-                self.currentFilterType = type
-                self.trends = data.results
-                self.tableView.reloadData()
-                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-            
-            case .failure(let error):
-                self.showNetworkFailAlert(message: error.errorMessageForAlert)
-                print(error)
-            }
-        }
+        NetworkManager.shared.fetchTrendDataWithURLSession(api: .trend(type: type), delegate: self)
     }
     
     override func setupNavi() {
@@ -161,5 +163,21 @@ extension TrendViewController: UITableViewDataSource, UITableViewDelegate {
 extension TrendViewController: TrendTableViewCellDelegate {
     func clipButtonTapped(for cell: TrendTableViewCell) {
         print(#function)
+    }
+}
+
+extension TrendViewController: URLSessionDataDelegate {
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive response: URLResponse) async -> URLSession.ResponseDisposition {
+        print(response)
+        return .allow
+    }
+    
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        print(data)
+    }
+    
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
+        print(error ?? "에러없음")
     }
 }
