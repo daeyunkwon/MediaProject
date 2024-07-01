@@ -33,6 +33,8 @@ final class TrendViewController: BaseViewController {
         return [filteredAll, filteredMovie, filteredTv]
     }
     
+    var buffer: Data = Data()
+    
     //MARK: - UI Components
     
     private let tableView = UITableView()
@@ -76,6 +78,7 @@ final class TrendViewController: BaseViewController {
 //        }
         
         NetworkManager.shared.fetchTrendDataWithURLSession(api: .trend(type: type), delegate: self)
+        self.currentFilterType = type
     }
     
     override func setupNavi() {
@@ -175,9 +178,20 @@ extension TrendViewController: URLSessionDataDelegate {
     
     func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
         print(data)
+        buffer.append(data)
     }
     
     func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: (any Error)?) {
         print(error ?? "에러없음")
+        
+        
+        do {
+            let result = try JSONDecoder().decode(TrendData.self, from: buffer)
+            self.trends = result.results
+            self.tableView.reloadData()
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
+        } catch {
+            print(error)
+        }
     }
 }
