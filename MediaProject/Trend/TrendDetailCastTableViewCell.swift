@@ -47,7 +47,6 @@ final class TrendDetailCastTableViewCell: UITableViewCell {
         label.textColor = .lightGray
         return label
     }()
-    
 
     //MARK: - Life Cycle
     

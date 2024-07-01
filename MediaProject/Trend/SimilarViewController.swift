@@ -17,11 +17,11 @@ final class SimilarViewController: BaseViewController {
     var mediaType: MediaType = .movie
     var id: Int = 0
     
-    var similarList: [SimilarResult] = []
-    var recommendationList: [RecommendationResult] = []
-    var posterList: [PosterResult] = []
+    private var similarList: [SimilarResult] = []
+    private var recommendationList: [RecommendationResult] = []
+    private var posterList: [PosterResult] = []
     
-    enum CellType: Int, CaseIterable {
+    private enum CellType: Int, CaseIterable {
         case similarity
         case recommendation
         case poster
@@ -200,7 +200,6 @@ extension SimilarViewController: UITableViewDataSource, UITableViewDelegate {
 extension SimilarViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         switch collectionView.tag {
         case CellType.similarity.rawValue:
             self.presentTrendDetailVC(

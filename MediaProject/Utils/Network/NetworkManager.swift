@@ -8,19 +8,21 @@
 import Foundation
 import Alamofire
 
-enum TMDBNetworkError: Error {
-    case failedCreateURL
-    case failedRequest
-    
-    var errorMessageForAlert: String {
-        return "잠시 후 다시 시도해주세요."
-    }
-}
+
 
 final class NetworkManager {
     
     static let shared = NetworkManager()
     private init() {}
+    
+    enum TMDBNetworkError: Error {
+        case failedCreateURL
+        case failedRequest
+        
+        var errorMessageForAlert: String {
+            return "잠시 후 다시 시도해주세요."
+        }
+    }
     
     func fetchData<T: Decodable>(api: TMDBAPI, model: T.Type, completion: @escaping (Result<T, TMDBNetworkError>) -> Void) {
         

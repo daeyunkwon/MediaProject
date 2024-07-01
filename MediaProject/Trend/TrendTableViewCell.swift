@@ -64,6 +64,7 @@ final class TrendTableViewCell: UITableViewCell {
         btn.tintColor = .black
         btn.backgroundColor = .white
         btn.addTarget(self, action: #selector(clipButtonTapped), for: .touchUpInside)
+        btn.layer.cornerRadius = 15
         return btn
     }()
     
@@ -128,11 +129,6 @@ final class TrendTableViewCell: UITableViewCell {
         mediaSubtitleLabel.text = ""
         averageValueLabel.text = ""
         posterImageView.image = nil
-    }
-    
-    override func layoutIfNeeded() {
-        super.layoutIfNeeded()
-        clipButton.layer.cornerRadius = clipButton.layer.frame.width / 2
     }
     
     //MARK: - Init
@@ -238,7 +234,7 @@ final class TrendTableViewCell: UITableViewCell {
     
     //MARK: - Functions
     
-    @objc func clipButtonTapped() {
+    @objc private func clipButtonTapped() {
         self.delegate?.clipButtonTapped(for: self)
     }
     

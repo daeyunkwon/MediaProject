@@ -24,7 +24,7 @@ final class TrendDetailViewController: BaseViewController {
     var backPosterImagePath: String?
     var overView: String?
     
-    enum SectionType: Int {
+    private enum SectionType: Int {
         case overView
         case cast
         

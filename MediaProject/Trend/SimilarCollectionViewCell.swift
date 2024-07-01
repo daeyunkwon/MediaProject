@@ -56,13 +56,17 @@ final class SimilarCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(posterImageView)
-        posterImageView.snp.makeConstraints { make in
-            make.edges.equalTo(contentView.snp.edges)
-        }
+        configureLayout()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func configureLayout() {
+        contentView.addSubview(posterImageView)
+        posterImageView.snp.makeConstraints { make in
+            make.edges.equalTo(contentView.snp.edges)
+        }
     }
 }

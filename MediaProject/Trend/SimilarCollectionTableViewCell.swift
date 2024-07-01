@@ -13,8 +13,6 @@ final class SimilarCollectionTableViewCell: UITableViewCell {
     
     //MARK: - Properties
     
-    var collectionCellWidthDivider: CGFloat = 0
-    
     enum CellType: Int {
         case similarity
         case recommendation
