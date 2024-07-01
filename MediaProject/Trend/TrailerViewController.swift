@@ -31,11 +31,18 @@ final class TrailerViewController: BaseViewController {
         NetworkManager.shared.fetchData(api: .video(id: self.id, mediaType: self.mediaType), model: VideoData.self) { result in
             switch result {
             case .success(let data):
-                print(data.results.first?.key ?? "")
-                guard let url = APIURL.makeYoutubeURL(key: data.results.first?.key ?? "") else { return }
+                let trailerList = data.results.filter { video in
+                    if video.type == "Trailer" {
+                        return true
+                    }
+                    return false
+                }
+                
+                guard let url = APIURL.makeYoutubeURL(key: trailerList.first?.key ?? "") else { return }
+                
                 let request = URLRequest(url: url)
-                print(request)
                 self.webView.load(request)
+                
             case .failure(let error):
                 self.showNetworkFailAlert(message: error.errorMessageForAlert)
                 print(error)

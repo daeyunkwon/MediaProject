@@ -14,4 +14,5 @@ struct VideoData: Decodable {
 
 struct Video: Decodable {
     let key: String?
+    let type: String?
 }
