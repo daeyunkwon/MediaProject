@@ -47,6 +47,8 @@
 		44E178FA2C313EC7003901CC /* CombinedCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178F92C313EC7003901CC /* CombinedCredits.swift */; };
 		44E178FE2C3144DE003901CC /* PersonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178FD2C3144DE003901CC /* PersonCollectionViewCell.swift */; };
 		44E179002C3169CE003901CC /* PersonHeaderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E178FF2C3169CE003901CC /* PersonHeaderCollectionViewCell.swift */; };
+		44E179312C32C136003901CC /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E179302C32C136003901CC /* Video.swift */; };
+		44E179332C32C73B003901CC /* TrailerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E179322C32C73B003901CC /* TrailerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,8 @@
 		44E178F92C313EC7003901CC /* CombinedCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombinedCredits.swift; sourceTree = "<group>"; };
 		44E178FD2C3144DE003901CC /* PersonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonCollectionViewCell.swift; sourceTree = "<group>"; };
 		44E178FF2C3169CE003901CC /* PersonHeaderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonHeaderCollectionViewCell.swift; sourceTree = "<group>"; };
+		44E179302C32C136003901CC /* Video.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		44E179322C32C73B003901CC /* TrailerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +149,7 @@
 				440027122C29C864005D4F0B /* Poster.swift */,
 				44E178F72C313236003901CC /* Profile.swift */,
 				44E178F92C313EC7003901CC /* CombinedCredits.swift */,
+				44E179302C32C136003901CC /* Video.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -166,6 +171,7 @@
 				44E178F32C311B66003901CC /* PersonDetailViewController.swift */,
 				44E178FD2C3144DE003901CC /* PersonCollectionViewCell.swift */,
 				44E178FF2C3169CE003901CC /* PersonHeaderCollectionViewCell.swift */,
+				44E179322C32C73B003901CC /* TrailerViewController.swift */,
 			);
 			path = Trend;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 				4411F0FE2C16D02C00878AFE /* AppDelegate.swift in Sources */,
 				440027132C29C864005D4F0B /* Poster.swift in Sources */,
 				4411F1162C16D96800878AFE /* Trend.swift in Sources */,
+				44E179332C32C73B003901CC /* TrailerViewController.swift in Sources */,
 				44E178F42C311B66003901CC /* PersonDetailViewController.swift in Sources */,
 				4411F1302C1735BF00878AFE /* Credits.swift in Sources */,
 				4411F1322C174BBA00878AFE /* TrendDetailOverViewCellDelegate.swift in Sources */,
@@ -338,6 +345,7 @@
 				442BA51D2C2BFBA3005185B4 /* TMDBAPI.swift in Sources */,
 				4411F1142C16D8FD00878AFE /* APIKey.swift in Sources */,
 				4400270B2C297A42005D4F0B /* SimilarCollectionViewCell.swift in Sources */,
+				44E179312C32C136003901CC /* Video.swift in Sources */,
 				44E178FE2C3144DE003901CC /* PersonCollectionViewCell.swift in Sources */,
 				4400270F2C29BDAC005D4F0B /* Recommendation.swift in Sources */,
 				443A3E152C2410A900C426FD /* NetworkManager.swift in Sources */,

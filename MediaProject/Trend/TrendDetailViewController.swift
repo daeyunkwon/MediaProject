@@ -69,6 +69,17 @@ final class TrendDetailViewController: BaseViewController {
         return label
     }()
     
+    private lazy var trailerButton: UIButton = {
+        let btn = UIButton(type: .system)
+        btn.setTitle("예고편", for: .normal)
+        
+        btn.backgroundColor = .systemBlue
+        btn.setTitleColor(.white, for: .normal)
+        btn.layer.cornerRadius = 10
+        btn.addTarget(self, action: #selector(trailerButtonTapped), for: .touchUpInside)
+        return btn
+    }()
+    
     private let tableView: UITableView = UITableView()
     
     //MARK: - Life Cycle
@@ -153,6 +164,14 @@ final class TrendDetailViewController: BaseViewController {
             make.trailing.equalTo(view.snp.trailing)
             make.bottom.equalToSuperview()
         }
+        
+        view.addSubview(trailerButton)
+        trailerButton.snp.makeConstraints { make in
+            make.width.equalTo(80)
+            make.height.equalTo(30)
+            make.trailing.equalTo(view.safeAreaLayoutGuide).inset(10)
+            make.bottom.equalTo(backImageView.snp.bottom).offset(-5)
+        }
     }
     
     override func configureUI() {
@@ -177,6 +196,13 @@ final class TrendDetailViewController: BaseViewController {
     
     @objc private func leftBarButtonTapped() {
         dismiss(animated: true)
+    }
+    
+    @objc private func trailerButtonTapped() {
+        let vc = TrailerViewController()
+        vc.id = self.id
+        vc.mediaType = self.mediaType
+        pushVC(viewController: vc)
     }
 }
 

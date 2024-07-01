@@ -18,6 +18,7 @@ enum TMDBAPI {
     case poster(id: Int, mediaType: MediaType)
     case profile(id: Int)
     case combinedCredits(id: Int)
+    case video(id: Int, mediaType: MediaType)
     
     enum TrendType {
         case all
@@ -43,7 +44,7 @@ enum TMDBAPI {
                 guard let url = URL(string: baseURL + "trending/tv/day") else {return nil}
                 return url
             }
-        
+            
         case .credits(let id, let mediaType):
             switch mediaType {
             case .movie:
@@ -54,12 +55,12 @@ enum TMDBAPI {
                 return url
             default: break
             }
-        
-        
+            
+            
         case .search:
             guard let url = URL(string: baseURL + APIURL.searchURL) else {return nil}
             return url
-        
+            
         case .similar(let id, let mediaType):
             switch mediaType {
             case .movie:
@@ -92,14 +93,25 @@ enum TMDBAPI {
                 return url
             default: break
             }
-        
+            
         case .profile(let id):
             guard let url = URL(string: baseURL + APIURL.profileURL(id: String(id))) else {return nil}
             return url
-        
+            
         case .combinedCredits(let id):
             guard let url = URL(string: baseURL + APIURL.combinedCreditsURL(id: String(id))) else {return nil}
             return url
+            
+        case .video(let id, let mediaType):
+            switch mediaType {
+            case .movie:
+                guard let url = URL(string: baseURL + APIURL.videoMovieURL(id: String(id))) else {return nil}
+                return url
+            case .tv:
+                guard let url = URL(string: baseURL + APIURL.videoTVURL(id: String(id))) else {return nil}
+                return url
+            default: break
+            }
         }
         
         return nil
@@ -119,7 +131,7 @@ enum TMDBAPI {
                     "page": page,
                     "lagnuage": "ko-KR"]
             
-        case .poster:
+        case .poster, .video:
             return [:]
         }
     }
